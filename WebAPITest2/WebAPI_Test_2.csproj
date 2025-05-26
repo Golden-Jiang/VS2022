@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Utility\ILog.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="iitDataWeb">
+      <HintPath>..\..\..\TSB2\Product\iit SDK For Win-Web\iitDataWeb\bin\Release\net9.0\iitDataWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitLogWeb">
+      <HintPath>..\..\..\TSB2\Product\iit SDK For Win-Web\iitLogWeb\bin\Release\net8.0\iitLogWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitMSGWeb">
+      <HintPath>..\..\..\TSB2\Product\iit SDK For Win-Web\iitMSGWeb\bin\Release\net9.0\iitMSGWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitSystemWeb">
+      <HintPath>..\..\..\TSB2\Product\iit SDK For Win-Web\iitSystemWeb\bin\Release\net8.0\iitSystemWeb.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Interface\" />
+    <Folder Include="Model\" />
+  </ItemGroup>
+
+</Project>

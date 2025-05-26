@@ -1,27 +1,20 @@
-namespace WebAPITest1
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+using iitSystemWeb;
 
-            // Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddControllers();
+// Add services to the container.
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddControllers();
 
-            var app = builder.Build();
+var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline.
+app.Configuration.GetSection("Logging");
 
-            app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+app.UseAuthorization();
 
+app.MapControllers();
 
-            app.MapControllers();
-
-            app.Run();
-        }
-    }
-}
+app.Run();

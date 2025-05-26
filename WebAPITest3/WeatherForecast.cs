@@ -1,4 +1,4 @@
-namespace WebAPI_Test_1
+namespace WebAPI_Test_3
 {
     public class WeatherForecast
     {

@@ -1,18 +1,22 @@
-//===================================================================================================
+﻿//===================================================================================================
 // Project Name  : TSB2.0 WebAPI
 // Program Name  : WeatherForecastController.cs
-// Description   : �t�αҰʶi�J�{��
+// Description   : 系統啟動進入程式
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/19 16:30 �إߩ� D:\Golden\Project\VS2022\WebAPI_Test_1 �ؿ� 
+// Create Author : Golden Jiang 2025/05/19 16:30 建立於 D:\Golden\Project\VS2022\WebAPI_Test_1 目錄 
 // Update Record :
 // Note          :
 //===================================================================================================
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Xml.Linq;
+using Microsoft.AspNetCore.Http.Extensions;
 //
 // iit SDK 
 //
@@ -27,62 +31,28 @@ namespace WebAPI_Test_1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WeatherForecastController : ControllerBase
+    public class UserController : ControllerBase
     {
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        public class Person 
-        {
-            public string Name { get; set; }
-            public int Age { get; set; }
-            public Person(string name, int age)
-            {
-                Name = name;
-                Age = age;
-            }
-        }
-
-        public              Person person;
-        private readonly    ILogger<WeatherForecastController> _logger;
+        private readonly    ILogger<UserController> _logger;
 //
-        public WeatherForecastController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, ILogger<WeatherForecastController> logger)
+        public UserController(ILogger<UserController> logger)
         {
-            ILog iLog =   new ILog();
-//
-            Utility.InitStatic(configuration, httpContextAccessor);
 //
             Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] =   Utility.GetClientIP(Static.httpContextAccessor);
-            //Static.httpContextAccessor.HttpContext.Items["MyData"] = "Hello, World!";
-            iLog.WriteLog("WebAPI Start at " + DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss.fff"), iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST);
-//
             _logger     =   logger;
-        } // end of public WeatherForecastController(IHttpContextAccessor httpContextAccessor, ... )
-
+        } // end of public public UserController(ILogger<UserController> logger)
+//
         [HttpGet]
-        //public IEnumerable<WeatherForecast> Get()
         public string Get()
         {
             iitAPIResultClass APIResult = new iitAPIResultClass();
             ILog iLog =   new ILog();
-//
+            //
             try
             { 
                 iLog.WriteLog(Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG);
-                person = new Person( "gg", 18 );
-                Utility.SetResponseResult<Person>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], person );
+                Utility.SetResponseResult<string>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], "" );
                 iLog.WriteLog( iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
-
-                //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                //{
-                //    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                //    TemperatureC = Random.Shared.Next(-20, 55),
-                //    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-                //})
-                //.ToArray();
-
             }
             catch( Exception except )
             {
@@ -90,7 +60,6 @@ namespace WebAPI_Test_1.Controllers
                 iLog.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
                 //
                 Utility.SetResponseResult<string>( APIResult, "8501", APIError.E8501, except.Message );
-                //return OK(APIResult);
             }
 //
             var response = JsonConvert.SerializeObject( APIResult );
@@ -99,5 +68,5 @@ namespace WebAPI_Test_1.Controllers
     } // end of public class WeatherForecastController : ControllerBase
 } // end of namespace WebAPI_Test_1.Controllers
 //===================================================================================================
-// end of StaticResource.cs
+// end of User.cs
 //===================================================================================================
