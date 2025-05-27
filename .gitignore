@@ -13,3 +13,7 @@
 /WebApplication1
 /WebApplication2
 /WebApplication3
+/WebAPITest4/bin/Release/net9.0
+/WebAPITest4/obj
+/WebAPIWithOpenAPI/bin/Release/net9.0
+/WebAPIWithOpenAPI/obj
