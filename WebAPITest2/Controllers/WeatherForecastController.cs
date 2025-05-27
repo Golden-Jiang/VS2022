@@ -50,10 +50,7 @@ namespace WebAPI_Test_2.Controllers
 //
         public WeatherForecastController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, ILogger<WeatherForecastController> logger)
         {
-            Utility.InitStatic(configuration, httpContextAccessor);
-//
-            //Static.httpContextAccessor.HttpContext.Items[ "ClientIP" ] =   Utility.GetClientIP(Static.httpContextAccessor);
-            //Static.httpContextAccessor.HttpContext.Items["MyData"] = "Hello, World!";
+            SystemTools.SetClientIP(httpContextAccessor);
 //
             _logger     =   logger;
         } // end of public WeatherForecastController(IHttpContextAccessor httpContextAccessor, ... )
@@ -69,24 +66,15 @@ namespace WebAPI_Test_2.Controllers
             { 
                 iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
                 person = new Person( "gg", 18 );
-                Utility.SetResponseResult<Person>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], person );
+                DataTools.SetResponseResult<Person>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], person );
                 iLog.WriteLog( iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
-
-                //return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-                //{
-                //    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                //    TemperatureC = Random.Shared.Next(-20, 55),
-                //    Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-                //})
-                //.ToArray();
-
             }
             catch( Exception except )
             {
                 iLog.Log.except = except;
                 iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
-            //
-                Utility.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
+                //
+                DataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
                 //return OK(APIResult);
             }
 //

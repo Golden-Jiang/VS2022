@@ -19,7 +19,7 @@
       <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitDataWeb\bin\Release\net9.0\iitDataWeb.dll</HintPath>
     </Reference>
     <Reference Include="iitLogWeb">
-      <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitLogWeb\bin\Release\net8.0\iitLogWeb.dll</HintPath>
+      <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitLogWeb\bin\Release\net9.0\iitLogWeb.dll</HintPath>
     </Reference>
     <Reference Include="iitMSGWeb">
       <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitMSGWeb\bin\Release\net9.0\iitMSGWeb.dll</HintPath>

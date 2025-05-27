@@ -13,7 +13,13 @@ namespace WebAPI_Test_3
             builder.Services.AddDbContext<DBContext>(Options =>
                     Options.UseSqlServer(builder.Configuration.GetConnectionString("SMARTBANK")));
 
-            // Add services to the container.
+            // 註冊 IHttpContextAccessor
+            builder.Services.AddHttpContextAccessor();
+            // 設置 IConfiguration
+            IConfiguration configuration = builder.Configuration;
+            // 系統啟動
+            Utility.Start(configuration);
+           
             builder.Services.AddControllersWithViews();
 
             builder.Services.AddControllers();

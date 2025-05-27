@@ -3,46 +3,32 @@
   "WorkspaceRootPath": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\webapitest1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:webapitest1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\utility\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\webapitest3.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DD43CE14-4647-4B79-ABA6-096BD49D5D2E}|..\\WebAPITest2\\WebAPITest2.csproj|d:\\golden\\project\\vs2022\\webapitest2\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DD43CE14-4647-4B79-ABA6-096BD49D5D2E}|..\\WebAPITest2\\WebAPITest2.csproj|d:\\golden\\project\\vs2022\\webapitest2\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\webapitest3.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DD43CE14-4647-4B79-ABA6-096BD49D5D2E}|..\\WebAPITest2\\WebAPITest2.csproj|d:\\golden\\project\\vs2022\\webapitest2\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\staticresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:staticresource.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -52,164 +38,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WebAPITest1",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\WebAPITest1.csproj",
-              "RelativeDocumentMoniker": "WebAPITest1.csproj",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\WebAPITest1.csproj",
-              "RelativeToolTip": "WebAPITest1.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-26T22:40:30.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherForecast.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WeatherForecast.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest3\\WeatherForecast.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WeatherForecast.cs",
-              "RelativeToolTip": "..\\WebAPITest3\\WeatherForecast.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:39:49.574Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest3\\Program.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
-              "RelativeToolTip": "..\\WebAPITest3\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:38:41.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "WebAPITest3",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WebAPITest3.csproj",
-              "RelativeDocumentMoniker": "..\\WebAPITest3\\WebAPITest3.csproj",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WebAPITest3.csproj",
-              "RelativeToolTip": "..\\WebAPITest3\\WebAPITest3.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-05-26T22:36:40.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Models\\DBContext.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest3\\Models\\DBContext.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Models\\DBContext.cs",
-              "RelativeToolTip": "..\\WebAPITest3\\Models\\DBContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:36:57.779Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "..\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:33:04.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest2\\Controllers\\UserController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\UserController.cs",
-              "RelativeToolTip": "..\\WebAPITest2\\Controllers\\UserController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:32:20.392Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Utility.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Utility.cs",
-              "RelativeDocumentMoniker": "Utility.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Utility.cs",
-              "RelativeToolTip": "Utility.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAD4vw8AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:28:24.05Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "StaticResource.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\StaticResource.cs",
-              "RelativeDocumentMoniker": "StaticResource.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\StaticResource.cs",
-              "RelativeToolTip": "StaticResource.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:27:28.149Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:26:56.348Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UserController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\UserController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\UserController.cs",
-              "RelativeToolTip": "Controllers\\UserController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAMBAwDYAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:17:43.796Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "WeatherForecastController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\WeatherForecastController.cs",
-              "RelativeDocumentMoniker": "Controllers\\WeatherForecastController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\WeatherForecastController.cs",
-              "RelativeToolTip": "Controllers\\WeatherForecastController.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAAA0wEsAAABHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-26T22:08:10.655Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -229,6 +59,122 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Properties\\launchSettings.json",
+              "RelativeToolTip": "..\\WebAPITest3\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-27T03:02:24.268Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "..\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T03:02:04.232Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-27T02:42:43.069Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WebAPITest3",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WebAPITest3.csproj",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\WebAPITest3.csproj",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\WebAPITest3.csproj",
+              "RelativeToolTip": "..\\WebAPITest3\\WebAPITest3.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-05-27T02:34:45.957Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\appsettings.json",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\appsettings.json",
+              "RelativeToolTip": "..\\WebAPITest3\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-27T02:26:15.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\appsettings.json",
+              "RelativeDocumentMoniker": "..\\WebAPITest2\\appsettings.json",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\appsettings.json",
+              "RelativeToolTip": "..\\WebAPITest2\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-27T02:25:57.932Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Utility.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Utility\\Utility.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\Utility\\Utility.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Utility\\Utility.cs",
+              "RelativeToolTip": "..\\WebAPITest3\\Utility\\Utility.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAkwCMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T01:26:29.378Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest3\\Program.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
+              "RelativeToolTip": "..\\WebAPITest3\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T01:26:04.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "..\\WebAPITest2\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T01:25:28.378Z",
+              "EditorCaption": ""
             }
           ]
         }
