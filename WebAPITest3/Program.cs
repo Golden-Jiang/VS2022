@@ -9,13 +9,13 @@ namespace WebAPI_Test_3
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // 依賴注入
+            // 依賴注入 DBContext
             builder.Services.AddDbContext<DBContext>(Options =>
                     Options.UseSqlServer(builder.Configuration.GetConnectionString("SMARTBANK")));
 
             // 註冊 IHttpContextAccessor
             builder.Services.AddHttpContextAccessor();
-            // 設置 IConfiguration
+            // 定義 IConfiguration
             IConfiguration configuration = builder.Configuration;
             // 系統啟動
             Utility.Start(configuration);
