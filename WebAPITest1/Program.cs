@@ -1,20 +1,41 @@
-using iitSystemWeb;
+using Microsoft.EntityFrameworkCore;
+using WebAPI_Test_1.Models;
 
-var builder = WebApplication.CreateBuilder(args);
+namespace WebAPI_Test_1
+{
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddHttpContextAccessor();
-builder.Services.AddControllers();
+            // 依賴注入 DBContext
+            builder.Services.AddDbContext<DBContext>(Options =>
+                    Options.UseSqlServer(builder.Configuration.GetConnectionString("SMARTBANK")));
 
-var app = builder.Build();
+            // 註冊 IHttpContextAccessor
+            builder.Services.AddHttpContextAccessor();
+            // 定義 IConfiguration
+            IConfiguration configuration = builder.Configuration;
+            // iitSDKWeb 系統啟動
+            Utility.Start(configuration);
+           
+            builder.Services.AddControllersWithViews();
 
-// Configure the HTTP request pipeline.
-app.Configuration.GetSection("Logging");
+            builder.Services.AddControllers();
 
-app.UseHttpsRedirection();
+            var app = builder.Build();
 
-app.UseAuthorization();
+            // Configure the HTTP request pipeline.
 
-app.MapControllers();
+            app.UseHttpsRedirection();
 
-app.Run();
+            app.UseAuthorization();
+
+
+            app.MapControllers();
+
+            app.Run();
+        }
+    }
+}
