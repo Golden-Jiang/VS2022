@@ -17,7 +17,7 @@ namespace WebAPI_Test_3
             builder.Services.AddHttpContextAccessor();
             // 定義 IConfiguration
             IConfiguration configuration = builder.Configuration;
-            // 系統啟動
+            // iitSDKWeb 系統啟動
             Utility.Start(configuration);
            
             builder.Services.AddControllersWithViews();
