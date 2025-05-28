@@ -10,13 +10,19 @@
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
+using iitDataWeb;
+using iitMSGWeb;
+using iitSystemWeb;
+using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using WebAPITest1.Models;
 //
 // iit SDK 
 //
 //using iitSystemWeb;
-//using iitLogWeb;
+using iitLogWeb;
+using System.ComponentModel.DataAnnotations;
 //using iitDataWeb;
 //using iitMSGWeb;
 //---------------------------------------------------------------------------------------------------
@@ -31,17 +37,43 @@ namespace WebAPITest1.Controllers
     {
        private readonly DBContext _DBContext;
 
-       public BranchController(DBContext dBContext)
+       public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
        {
+            ILog iLog =   new ILog();
+            //
             _DBContext = dBContext;
-        }
-
+            //
+            SystemTools.SetClientIP(httpContextAccessor);
+            //
+            iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
+        } // end of public BranchController(IHttpContextAccessor
+        //
         // GET: <BranchController>
-        //[HttpGet]
-        //public Branch Get()
-        //{
-        //    return _DBContext.Branch.FirstOrDefault();
-        //}
+        [HttpGet]
+        public string GetRecord([FromQuery(Name = "TxCode")]string TxCode)
+        {
+            iitAPIResultClass APIResult = new iitAPIResultClass();
+            ILog iLog =   new ILog();
+            //
+            try
+            { 
+                var result = (from a in _DBContext.Branches
+                              select a).FirstOrDefault();
+
+                DataTools.SetResponseResult<Branch>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
+                iLog.WriteLog( $"TcCode={TxCode}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+            }
+            catch( Exception except )
+            {
+                iLog.Log.except = except;
+                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                //
+                DataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
+                //return OK(APIResult);
+            }
+//
+            return JsonConvert.SerializeObject( APIResult );
+        } // end of public Branch GetRecord()
 
         // GET <BranchController>/5
         [HttpGet( "{id}" )]
@@ -51,10 +83,19 @@ namespace WebAPITest1.Controllers
         }
 
         // POST api/<BranchController>
-        [HttpPost]
-        public void Post( [FromBody] string value )
+        public class Tel 
         {
+            [Required]
+            public string TeleNo { get; set;} 
+            public string Name { get; set;}
         }
+        [HttpPost]
+        public void Post( [FromQuery(Name = "TxCode")]string TxCode, [FromBody] Tel ss )
+        {
+            ILog iLog =   new ILog();
+            //
+            iLog.WriteLog( $"TxCode={TxCode}-{ss}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+        } // end of public void Post( string TxCode, [FromBody] string value )
 
         // PUT api/<BranchController>/5
         [HttpPut( "{id}" )]
