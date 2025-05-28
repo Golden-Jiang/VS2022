@@ -3,7 +3,7 @@
 // Program Name  : WeatherForecastController.cs
 // Description   :  
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/19 16:30 建立於 D:\Golden\Project\VS2022\WebAPI_Test_2 目錄 
+// Create Author : Golden Jiang 2025/05/28 17:30 建立於 D:\Golden\Project\VS2022\WebAPITest1 目錄 
 // Update Record :
 // Note          :
 //===================================================================================================
@@ -23,7 +23,7 @@ using iitMSGWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
-namespace WebAPI_Test_1.Controllers
+namespace WebAPITest1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -50,7 +50,6 @@ namespace WebAPI_Test_1.Controllers
 //
         public WeatherForecastController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, ILogger<WeatherForecastController> logger)
         {
-            Static.httpContextAccessor = httpContextAccessor;
             SystemTools.SetClientIP(httpContextAccessor);
 //
             _logger     =   logger;
@@ -82,4 +81,7 @@ namespace WebAPI_Test_1.Controllers
             return JsonConvert.SerializeObject( APIResult );
         } // end of public IEnumerable<WeatherForecast> Get()
     } // end of public class WeatherForecastController : ControllerBase
-}
+} // end of namespace WebAPITest1.Controllers
+//===================================================================================================
+// end of WeatherForecastController.cs
+//===================================================================================================

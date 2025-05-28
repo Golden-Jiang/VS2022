@@ -1,9 +1,29 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebAPI_Test_1.Models;
-
+﻿//===================================================================================================
+// Project Name  : TSB2.0 WebAPI
+// Program Name  : BranchController.cs
+// Description   :  
+// Version		 : Ver 1.0.0.0
+// Create Author : Golden Jiang 2025/05/28 17:30 建立於 D:\Golden\Project\VS2022\WebAPITest1 目錄 
+// Update Record :
+// Note          :
+//===================================================================================================
+//---------------------------------------------------------------------------------------------------
+// declare package
+//---------------------------------------------------------------------------------------------------
+using Microsoft.AspNetCore.Mvc;
+using WebAPITest1.Models;
+//
+// iit SDK 
+//
+//using iitSystemWeb;
+//using iitLogWeb;
+//using iitDataWeb;
+//using iitMSGWeb;
+//---------------------------------------------------------------------------------------------------
+// Program Area
+//---------------------------------------------------------------------------------------------------
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
-namespace WebAPI_Test_1.Controllers
+namespace WebAPITest1.Controllers
 {
     [Route( "[controller]" )]
     [ApiController]
@@ -47,5 +67,8 @@ namespace WebAPI_Test_1.Controllers
         public void Delete( int id )
         {
         }
-    }
-}
+    } // end of public class BranchController : ControllerBase
+} // end of WebAPITest1.Controllers
+//===================================================================================================
+// end of BranchController.cs
+//===================================================================================================

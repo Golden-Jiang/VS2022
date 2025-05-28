@@ -3,28 +3,32 @@
 // Program Name  : Utility.cs
 // Description   : 系統所有公共函式
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/27 09:30 建立於 D:\Golden\Project\VS2022\WebAPI_Test_1 目錄 
+// Create Author : Golden Jiang 2025/05/27 09:30 建立於 D:\Golden\Project\VS2022\WebAPITest1 目錄 
 // Update Record :
 // Note          :
 //===================================================================================================
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
-using System.Net;
+//using System.Net;
 //
 // iit SDK 
 //
 using iitSystemWeb;
 using iitLogWeb;
-using iitDataWeb;
+//using iitDataWeb;
 using iitMSGWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
-namespace WebAPI_Test_1
+namespace WebAPITest1
 { 
     public class Utility
     {
+        /// <summary>
+        /// 系統啟動時, 設定 iitSDKWeb 相關全域資料與環境
+        /// </summary>
+        /// <param name="config"></param>
         public static void Start(IConfiguration config)
         {
             ILog iLog =   new ILog();
@@ -38,7 +42,7 @@ namespace WebAPI_Test_1
             iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST );
         } // end of public static void InitStatic( IConfiguration config, ...)
     } // end of public class Utility
-} // end of namespace WebAPI_Test_1
+} // end of namespace WebAPITest1
 //===================================================================================================
 // end of Utility.cs
 //===================================================================================================

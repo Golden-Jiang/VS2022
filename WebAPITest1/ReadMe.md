@@ -3,7 +3,7 @@
 // Program Name  : ReadMe.md
 // Description   : WebAPITest1 說明文件
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/28 15:40 建立於 D:\Golden\Project\VS2022\WebAPI_Test_1 目錄 
+// Create Author : Golden Jiang 2025/05/28 15:40 建立於 D:\Golden\Project\VS2022\WebAPITest1 目錄 
 // Update Record :
 // Note          :
 //===================================================================================================

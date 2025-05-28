@@ -4,12 +4,241 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace WebAPI_Test_1.Models;
+namespace WebAPITest1.Models;
 
 public partial class DBContext : DbContext
 {
     public DBContext(DbContextOptions<DBContext> options)
-        : base(options)   
+        : base(options)
     {
     }
+
+    public virtual DbSet<Branch> Branches { get; set; }
+
+    public virtual DbSet<BranchComputer> BranchComputers { get; set; }
+
+    public virtual DbSet<WebTeleNo> WebTeleNos { get; set; }
+
+    public virtual DbSet<WorkingDay> WorkingDays { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Branch>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__Branch__FB76070253076E7A");
+
+            entity.ToTable("Branch");
+
+            entity.HasIndex(e => e.BranchId, "Index_01").IsUnique();
+
+            entity.HasIndex(e => e.Name, "Index_02");
+
+            entity.HasIndex(e => e.GroupId, "Index_97");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.Address)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.BankId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("BankID");
+            entity.Property(e => e.BranchId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("BranchID");
+            entity.Property(e => e.CityCode)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+            entity.Property(e => e.EastLongitude).HasMaxLength(50);
+            entity.Property(e => e.GroupId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("GroupID");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.NorthLatitude).HasMaxLength(50);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.Rfu)
+                .HasMaxLength(10)
+                .HasColumnName("RFU");
+            entity.Property(e => e.ServiceEndTime).HasMaxLength(100);
+            entity.Property(e => e.ServiceStartTime).HasMaxLength(100);
+            entity.Property(e => e.TeleNo)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.ZoneCode)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<BranchComputer>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__BranchCo__FB7607024C9F9827");
+
+            entity.ToTable("BranchComputer");
+
+            entity.HasIndex(e => e.ComputerId, "Index_01").IsUnique();
+
+            entity.Property(e => e.BankId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("BankID");
+            entity.Property(e => e.BranchGroupId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("BranchGroupID");
+            entity.Property(e => e.BranchId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("BranchID");
+            entity.Property(e => e.ComputerId)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false)
+                .HasColumnName("ComputerID");
+            entity.Property(e => e.ComputerIp)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("ComputerIP");
+            entity.Property(e => e.ComputerName)
+                .HasMaxLength(30)
+                .IsUnicode(false);
+            entity.Property(e => e.ComputerType)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.Cpu)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("CPU");
+            entity.Property(e => e.Disk)
+                .HasMaxLength(100)
+                .IsUnicode(false);
+            entity.Property(e => e.MacAddress)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Os)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("OS");
+            entity.Property(e => e.PlayListStatus)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.PlayListTime).HasColumnType("datetime");
+            entity.Property(e => e.PlayListVersion)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.ProgramStatus)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.ProgramTime).HasColumnType("datetime");
+            entity.Property(e => e.ProgramVersion)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.RemainMemory)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Rfu)
+                .HasMaxLength(20)
+                .HasColumnName("RFU");
+            entity.Property(e => e.ScreenId)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("ScreenID");
+            entity.Property(e => e.TemplateNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<WebTeleNo>(entity =>
+        {
+            entity.HasKey(e => e.TeleNo).HasName("PK__WebTeleN__B6081DD0A8CE5254");
+
+            entity.ToTable("WebTeleNo");
+
+            entity.HasIndex(e => e.Qrcode, "Index_01");
+
+            entity.HasIndex(e => e.QrcodeStartTime, "Index_02");
+
+            entity.HasIndex(e => e.Ip, "Index_03");
+
+            entity.HasIndex(e => e.CreateTime, "Index_04");
+
+            entity.HasIndex(e => e.LastAccessTime, "Index_05");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.TeleNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.AccountNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.Ip)
+                .IsRequired()
+                .HasMaxLength(70)
+                .IsUnicode(false)
+                .HasColumnName("IP");
+            entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
+            entity.Property(e => e.LastGetCallNoTime).HasColumnType("datetime");
+            entity.Property(e => e.Qrcode)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("QRCode");
+            entity.Property(e => e.QrcodeStartTime)
+                .HasColumnType("datetime")
+                .HasColumnName("QRCodeStartTime");
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.Rfu)
+                .HasMaxLength(10)
+                .HasColumnName("RFU");
+        });
+
+        modelBuilder.Entity<WorkingDay>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("WorkingDay");
+
+            entity.HasIndex(e => e.Wdate, "Index_01").IsUnique();
+
+            entity.Property(e => e.BatchDate)
+                .HasMaxLength(1)
+                .IsUnicode(false)
+                .HasColumnName("batch_date");
+            entity.Property(e => e.Status)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.VbatchDate)
+                .HasColumnType("datetime")
+                .HasColumnName("Vbatch_date");
+            entity.Property(e => e.Wdate)
+                .HasColumnType("datetime")
+                .HasColumnName("WDate");
+            entity.Property(e => e.Wdate1)
+                .HasMaxLength(8)
+                .IsUnicode(false)
+                .HasColumnName("WDate1");
+        });
+
+        OnModelCreatingPartial(modelBuilder);
+    }
+
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }
