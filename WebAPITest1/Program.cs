@@ -41,7 +41,7 @@ namespace WebAPITest1
             IConfiguration configuration = builder.Configuration;
 
             // iitSDKWeb ¨t²Î±Ò°Ê
-            Utility.Start(configuration);
+            Utility.Start(configuration, null);
            
             builder.Services.AddControllersWithViews();
 

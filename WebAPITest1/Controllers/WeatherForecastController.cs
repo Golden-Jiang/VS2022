@@ -47,7 +47,8 @@ namespace WebAPITest1.Controllers
 
         public              Person person;
         private readonly    ILogger<WeatherForecastController> _logger;
-//
+        private readonly    IHttpContextAccessor _httpContextAccessor;
+
         public WeatherForecastController(IHttpContextAccessor httpContextAccessor, IConfiguration configuration, ILogger<WeatherForecastController> logger)
         {
             SystemTools.SetClientIP(httpContextAccessor);
@@ -64,15 +65,15 @@ namespace WebAPITest1.Controllers
             //
             try
             { 
-                iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
+                iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
                 person = new Person( "gg", 18 );
                 DataTools.SetResponseResult<Person>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], person );
-                iLog.WriteLog( iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                iLog.WriteLog( iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
             }
             catch( Exception except )
             {
                 iLog.Log.except = except;
-                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor );
                 //
                 DataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
                 //return OK(APIResult);

@@ -1,48 +1,34 @@
 ﻿//===================================================================================================
 // Project Name  : TSB2.0 WebAPI
-// Program Name  : Utility.cs
-// Description   : 系統所有公共函式
+// Program Name  : AccountService.cs
+// Description   :  
 // Version		 : Ver 1.0.0.0
-// Create Author : Golden Jiang 2025/05/27 09:30 建立於 D:\Golden\Project\VS2022\WebAPITest2 目錄 
+// Create Author : Golden Jiang 2025/05/29 12:40 建立於 D:\Golden\Project\VS2022\WebAPITest1 目錄 
 // Update Record :
 // Note          :
 //===================================================================================================
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
-//using System.Net;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using WebAPITest1.Models;
 //
 // iit SDK 
 //
 using iitSystemWeb;
 using iitLogWeb;
-//using iitDataWeb;
+using iitDataWeb;
 using iitMSGWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
-namespace WebAPITest2
-{ 
-    public class Utility
+namespace WebAPITest1
+{
+    public class AccountService
     {
-        /// <summary>
-        /// 系統啟動時, 設定 iitSDKWeb 相關全域資料與環境
-        /// </summary>
-        /// <param name="config"></param>
-        public static void Start(IConfiguration config)
-        {
-            ILog iLog =   new ILog();
-            
-            // 系統啟動
-            SystemTools.SystemStart(config);
-
-            // 初始化系統公用訊息
-            iitMSG.Start();
-
-            iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST );
-        } // end of public static void InitStatic( IConfiguration config, ...)
-    } // end of public class Utility
-} // end of namespace WebAPITest2
+    }
+} // end of namespace WebAPITest1
 //===================================================================================================
-// end of Utility.cs
+// end of AccountService.cs
 //===================================================================================================

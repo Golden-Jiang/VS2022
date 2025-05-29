@@ -11,13 +11,17 @@
 // declare package
 //---------------------------------------------------------------------------------------------------
 //using System.Net;
+using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
+using WebAPITest1.Models;
 //
 // iit SDK 
 //
 using iitSystemWeb;
 using iitLogWeb;
-//using iitDataWeb;
 using iitMSGWeb;
+using iitDataWeb;
+using Microsoft.AspNetCore.Http;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -29,7 +33,7 @@ namespace WebAPITest1
         /// 系統啟動時, 設定 iitSDKWeb 相關全域資料與環境
         /// </summary>
         /// <param name="config"></param>
-        public static void Start(IConfiguration config)
+        public static void Start(IConfiguration config, IHttpContextAccessor httpContextAccessor)
         {
             ILog iLog =   new ILog();
             
@@ -39,8 +43,21 @@ namespace WebAPITest1
             // 初始化系統公用訊息
             iitMSG.Start();
 
-            iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST );
+            iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST, httpContextAccessor );
         } // end of public static void InitStatic( IConfiguration config, ...)
+
+        public static void SetClientEnvironment( IHttpContextAccessor httpContextAccessor, ref IHttpContextAccessor _httpContextAccessor, 
+                                                 DBContext dBContext, ref DBContext _DBContext )
+        {
+            ILog iLog =   new ILog();
+             
+            _DBContext              =   dBContext;
+            _httpContextAccessor    =   httpContextAccessor;
+             
+            SystemTools.SetClientIP( httpContextAccessor );
+             
+            iLog.WriteLog( _httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
+        } // end of SetClientEnvironment(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
     } // end of public class Utility
 } // end of namespace WebAPITest1
 //===================================================================================================

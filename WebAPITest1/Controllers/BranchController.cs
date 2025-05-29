@@ -10,21 +10,18 @@
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
-using iitDataWeb;
-using iitMSGWeb;
-using iitSystemWeb;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebAPITest1.Models;
+using System.ComponentModel.DataAnnotations;
 //
 // iit SDK 
 //
-//using iitSystemWeb;
+using WebAPITest1.Models;
 using iitLogWeb;
-using System.ComponentModel.DataAnnotations;
-//using iitDataWeb;
-//using iitMSGWeb;
+using iitDataWeb;
+using iitMSGWeb;
+using iitSystemWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -35,7 +32,8 @@ namespace WebAPITest1.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-       private readonly DBContext _DBContext;
+       private readonly     DBContext _DBContext;
+       private readonly     IHttpContextAccessor _httpContextAccessor;
 
        public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
        {
@@ -61,12 +59,12 @@ namespace WebAPITest1.Controllers
                               select a).FirstOrDefault();
 
                 DataTools.SetResponseResult<Branch>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
-                iLog.WriteLog( $"TcCode={TxCode}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                iLog.WriteLog( $"TcCode={TxCode}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
             }
             catch( Exception except )
             {
                 iLog.Log.except = except;
-                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor );
                 //
                 DataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
                 //return OK(APIResult);
@@ -94,7 +92,7 @@ namespace WebAPITest1.Controllers
         {
             ILog iLog =   new ILog();
             //
-            iLog.WriteLog( $"TxCode={TxCode}-{ss}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+            iLog.WriteLog( $"TxCode={TxCode}-{ss}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
         } // end of public void Post( string TxCode, [FromBody] string value )
 
         // PUT api/<BranchController>/5
