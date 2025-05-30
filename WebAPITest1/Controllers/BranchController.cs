@@ -22,6 +22,7 @@ using iitLogWeb;
 using iitDataWeb;
 using iitMSGWeb;
 using iitSystemWeb;
+using iitToolsWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -37,40 +38,40 @@ namespace WebAPITest1.Controllers
 
        public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
        {
-            ILog iLog =   new ILog();
-            //
-            _DBContext = dBContext;
-            //
-            SystemTools.SetClientIP(httpContextAccessor);
-            //
-            iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
+            //ILog iLog =   new ILog();
+            ////
+            //_DBContext = dBContext;
+            ////
+            //iitSystemTools.SetClientIP(httpContextAccessor);
+            ////
+            //iLog.WriteLog( Static.httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
         } // end of public BranchController(IHttpContextAccessor
         //
         // GET: <BranchController>
         [HttpGet]
-        public string GetRecord([FromQuery(Name = "TxCode")]string TxCode)
+        public void GetRecord([FromQuery(Name = "TxCode")]string TxCode)
         {
-            iitAPIResultClass APIResult = new iitAPIResultClass();
-            ILog iLog =   new ILog();
-            //
-            try
-            { 
-                var result = (from a in _DBContext.Branches
-                              select a).FirstOrDefault();
+//            iitAPIResultClass APIResult = new iitAPIResultClass();
+//            ILog iLog =   new ILog();
+//            //
+//            try
+//            { 
+//                var result = (from a in _DBContext.Branches
+//                              select a).FirstOrDefault();
 
-                DataTools.SetResponseResult<Branch>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
-                iLog.WriteLog( $"TcCode={TxCode}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
-            }
-            catch( Exception except )
-            {
-                iLog.Log.except = except;
-                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor );
-                //
-                DataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
-                //return OK(APIResult);
-            }
-//
-            return JsonConvert.SerializeObject( APIResult );
+//                iitDataTools.SetResponseResult<Branch>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
+//                iLog.WriteLog( $"TcCode={TxCode}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
+//            }
+//            catch( Exception except )
+//            {
+//                iLog.Log.except = except;
+//                iLog.WriteLog( "Error", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor );
+//                //
+//                iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, except.Message );
+//                //return OK(APIResult);
+//            }
+////
+//            return JsonConvert.SerializeObject( APIResult );
         } // end of public Branch GetRecord()
 
         // GET <BranchController>/5
@@ -90,9 +91,9 @@ namespace WebAPITest1.Controllers
         [HttpPost]
         public void Post( [FromQuery(Name = "TxCode")]string TxCode, [FromBody] Tel ss )
         {
-            ILog iLog =   new ILog();
-            //
-            iLog.WriteLog( $"TxCode={TxCode}-{ss}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
+            //ILog iLog =   new ILog();
+            ////
+            //iLog.WriteLog( $"TxCode={TxCode}-{ss}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
         } // end of public void Post( string TxCode, [FromBody] string value )
 
         // PUT api/<BranchController>/5

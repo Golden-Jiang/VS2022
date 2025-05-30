@@ -15,13 +15,13 @@ public partial class Branch
 
     public long RecSerialNo { get; set; }
 
-    public string BankId { get; set; }
+    public string BankID { get; set; }
 
-    public string BranchId { get; set; }
+    public string BranchID { get; set; }
 
     public string Name { get; set; }
 
-    public string GroupId { get; set; }
+    public string GroupID { get; set; }
 
     public string CityCode { get; set; }
 
@@ -39,5 +39,5 @@ public partial class Branch
 
     public string NorthLatitude { get; set; }
 
-    public string Rfu { get; set; }
+    public string RFU { get; set; }
 }

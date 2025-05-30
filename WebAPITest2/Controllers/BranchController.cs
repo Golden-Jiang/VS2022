@@ -22,6 +22,7 @@ using iitDataWeb;
 using iitMSGWeb;
 using iitSystemWeb;
 using iitLogWeb;
+using iitToolsWeb;
 using WebAPITest2.Dtos;
 //---------------------------------------------------------------------------------------------------
 // Program Area
@@ -96,8 +97,8 @@ namespace WebAPITest2.Controllers
 
                 //DataTools.SetResponseResult<dynamic>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
                 //DataTools.SetResponseResult<object>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
-                DataTools.SetResponseResult<BranchDtoGroup.BranchSelect>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
-                iLog.WriteLog( $"BranchID={id}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                iitDataTools.SetResponseResult<BranchDtoGroup.BranchSelect>( APIResult, "0000", iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS], result );
+                iLog.WriteLog( $"BranchID={id}-{iitMSG.HTTPMSG[iitMSG.CODE.HTTP.SUCCESS]}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _httpContextAccessor );
             }
             catch( Exception except )
             {

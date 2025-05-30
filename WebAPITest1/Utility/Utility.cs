@@ -20,6 +20,7 @@ using WebAPITest1.Models;
 using iitSystemWeb;
 using iitLogWeb;
 using iitMSGWeb;
+using iitToolsWeb;
 using iitDataWeb;
 using Microsoft.AspNetCore.Http;
 //---------------------------------------------------------------------------------------------------
@@ -35,26 +36,26 @@ namespace WebAPITest1
         /// <param name="config"></param>
         public static void Start(IConfiguration config, IHttpContextAccessor httpContextAccessor)
         {
-            ILog iLog =   new ILog();
+            ILog iLog =   new ILog( null );
             
             // 系統啟動
-            SystemTools.SystemStart(config);
+            iitSystemTools.SystemStart(config);
 
             // 初始化系統公用訊息
             iitMSG.Start();
 
-            iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST, httpContextAccessor );
+            iLog.WriteLog( $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST );
         } // end of public static void InitStatic( IConfiguration config, ...)
 
         public static void SetClientEnvironment( IHttpContextAccessor httpContextAccessor, ref IHttpContextAccessor _httpContextAccessor, 
                                                  DBContext dBContext, ref DBContext _DBContext )
         {
-            ILog iLog =   new ILog();
+            iitSystemTools.SetClientIP( httpContextAccessor );  // 一定要先執行
+             
+            ILog iLog =   new ILog( httpContextAccessor );
              
             _DBContext              =   dBContext;
             _httpContextAccessor    =   httpContextAccessor;
-             
-            SystemTools.SetClientIP( httpContextAccessor );
              
             iLog.WriteLog( _httpContextAccessor.HttpContext?.Request?.GetEncodedUrl(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, null );
         } // end of SetClientEnvironment(IHttpContextAccessor httpContextAccessor, DBContext dBContext)

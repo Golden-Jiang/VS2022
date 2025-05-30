@@ -7,13 +7,13 @@ namespace WebAPITest1.Models;
 
 public partial class WorkingDay
 {
-    public DateTime Wdate { get; set; }
+    public DateTime WDate { get; set; }
 
-    public string Wdate1 { get; set; }
+    public string WDate1 { get; set; }
 
     public string Status { get; set; }
 
-    public string BatchDate { get; set; }
+    public string batch_date { get; set; }
 
-    public DateTime? VbatchDate { get; set; }
+    public DateTime? Vbatch_date { get; set; }
 }

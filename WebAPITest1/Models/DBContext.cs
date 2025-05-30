@@ -13,13 +13,15 @@ public partial class DBContext : DbContext
     {
     }
 
-    public virtual DbSet<Branch> Branches { get; set; }
+    public virtual DbSet<Branch> Branch { get; set; }
 
-    public virtual DbSet<BranchComputer> BranchComputers { get; set; }
+    public virtual DbSet<BranchComputer> BranchComputer { get; set; }
 
-    public virtual DbSet<WebTeleNo> WebTeleNos { get; set; }
+    public virtual DbSet<SystemParameter> SystemParameter { get; set; }
 
-    public virtual DbSet<WorkingDay> WorkingDays { get; set; }
+    public virtual DbSet<WebTeleNo> WebTeleNo { get; set; }
+
+    public virtual DbSet<WorkingDay> WorkingDay { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,13 +29,11 @@ public partial class DBContext : DbContext
         {
             entity.HasKey(e => e.RecSerialNo).HasName("PK__Branch__FB76070253076E7A");
 
-            entity.ToTable("Branch");
-
-            entity.HasIndex(e => e.BranchId, "Index_01").IsUnique();
+            entity.HasIndex(e => e.BranchID, "Index_01").IsUnique();
 
             entity.HasIndex(e => e.Name, "Index_02");
 
-            entity.HasIndex(e => e.GroupId, "Index_97");
+            entity.HasIndex(e => e.GroupID, "Index_97");
 
             entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
 
@@ -42,34 +42,29 @@ public partial class DBContext : DbContext
             entity.Property(e => e.Address)
                 .IsRequired()
                 .HasMaxLength(100);
-            entity.Property(e => e.BankId)
+            entity.Property(e => e.BankID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("BankID");
-            entity.Property(e => e.BranchId)
+                .IsUnicode(false);
+            entity.Property(e => e.BranchID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("BranchID");
+                .IsUnicode(false);
             entity.Property(e => e.CityCode)
                 .IsRequired()
                 .HasMaxLength(4)
                 .IsUnicode(false);
             entity.Property(e => e.EastLongitude).HasMaxLength(50);
-            entity.Property(e => e.GroupId)
+            entity.Property(e => e.GroupID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("GroupID");
+                .IsUnicode(false);
             entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(50);
             entity.Property(e => e.NorthLatitude).HasMaxLength(50);
+            entity.Property(e => e.RFU).HasMaxLength(10);
             entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
-            entity.Property(e => e.Rfu)
-                .HasMaxLength(10)
-                .HasColumnName("RFU");
             entity.Property(e => e.ServiceEndTime).HasMaxLength(100);
             entity.Property(e => e.ServiceStartTime).HasMaxLength(100);
             entity.Property(e => e.TeleNo)
@@ -85,54 +80,45 @@ public partial class DBContext : DbContext
         {
             entity.HasKey(e => e.RecSerialNo).HasName("PK__BranchCo__FB7607024C9F9827");
 
-            entity.ToTable("BranchComputer");
+            entity.HasIndex(e => e.ComputerID, "Index_01").IsUnique();
 
-            entity.HasIndex(e => e.ComputerId, "Index_01").IsUnique();
-
-            entity.Property(e => e.BankId)
+            entity.Property(e => e.BankID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("BankID");
-            entity.Property(e => e.BranchGroupId)
+                .IsUnicode(false);
+            entity.Property(e => e.BranchGroupID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("BranchGroupID");
-            entity.Property(e => e.BranchId)
+                .IsUnicode(false);
+            entity.Property(e => e.BranchID)
                 .IsRequired()
                 .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("BranchID");
-            entity.Property(e => e.ComputerId)
-                .IsRequired()
-                .HasMaxLength(10)
-                .IsUnicode(false)
-                .HasColumnName("ComputerID");
-            entity.Property(e => e.ComputerIp)
+                .IsUnicode(false);
+            entity.Property(e => e.CPU)
                 .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("ComputerIP");
+                .IsUnicode(false);
+            entity.Property(e => e.ComputerID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.ComputerIP)
+                .HasMaxLength(20)
+                .IsUnicode(false);
             entity.Property(e => e.ComputerName)
                 .HasMaxLength(30)
                 .IsUnicode(false);
             entity.Property(e => e.ComputerType)
                 .HasMaxLength(1)
                 .IsUnicode(false);
-            entity.Property(e => e.Cpu)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("CPU");
             entity.Property(e => e.Disk)
                 .HasMaxLength(100)
                 .IsUnicode(false);
             entity.Property(e => e.MacAddress)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-            entity.Property(e => e.Os)
+            entity.Property(e => e.OS)
                 .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("OS");
+                .IsUnicode(false);
             entity.Property(e => e.PlayListStatus)
                 .HasMaxLength(1)
                 .IsUnicode(false);
@@ -147,33 +133,56 @@ public partial class DBContext : DbContext
             entity.Property(e => e.ProgramVersion)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(20);
             entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
             entity.Property(e => e.RemainMemory)
                 .HasMaxLength(20)
                 .IsUnicode(false);
-            entity.Property(e => e.Rfu)
-                .HasMaxLength(20)
-                .HasColumnName("RFU");
-            entity.Property(e => e.ScreenId)
+            entity.Property(e => e.ScreenID)
                 .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("ScreenID");
+                .IsUnicode(false);
             entity.Property(e => e.TemplateNo)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<SystemParameter>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__SystemPa__FB760702FB8AF3CF");
+
+            entity.HasIndex(e => new { e.FuncParamID, e.ParameterCode }, "Index_01").IsUnique();
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.FuncParamID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.ParameterCode)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.ParameterName)
+                .IsRequired()
+                .HasMaxLength(30);
+            entity.Property(e => e.ParameterValue)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
         });
 
         modelBuilder.Entity<WebTeleNo>(entity =>
         {
             entity.HasKey(e => e.TeleNo).HasName("PK__WebTeleN__B6081DD0A8CE5254");
 
-            entity.ToTable("WebTeleNo");
+            entity.HasIndex(e => e.QRCode, "Index_01");
 
-            entity.HasIndex(e => e.Qrcode, "Index_01");
+            entity.HasIndex(e => e.QRCodeStartTime, "Index_02");
 
-            entity.HasIndex(e => e.QrcodeStartTime, "Index_02");
-
-            entity.HasIndex(e => e.Ip, "Index_03");
+            entity.HasIndex(e => e.IP, "Index_03");
 
             entity.HasIndex(e => e.CreateTime, "Index_04");
 
@@ -190,51 +199,37 @@ public partial class DBContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.CreateTime).HasColumnType("datetime");
-            entity.Property(e => e.Ip)
+            entity.Property(e => e.IP)
                 .IsRequired()
                 .HasMaxLength(70)
-                .IsUnicode(false)
-                .HasColumnName("IP");
+                .IsUnicode(false);
             entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
             entity.Property(e => e.LastGetCallNoTime).HasColumnType("datetime");
-            entity.Property(e => e.Qrcode)
+            entity.Property(e => e.QRCode)
                 .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("QRCode");
-            entity.Property(e => e.QrcodeStartTime)
-                .HasColumnType("datetime")
-                .HasColumnName("QRCodeStartTime");
+                .IsUnicode(false);
+            entity.Property(e => e.QRCodeStartTime).HasColumnType("datetime");
+            entity.Property(e => e.RFU).HasMaxLength(10);
             entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
-            entity.Property(e => e.Rfu)
-                .HasMaxLength(10)
-                .HasColumnName("RFU");
         });
 
         modelBuilder.Entity<WorkingDay>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("WorkingDay");
+            entity.HasNoKey();
 
-            entity.HasIndex(e => e.Wdate, "Index_01").IsUnique();
+            entity.HasIndex(e => e.WDate, "Index_01").IsUnique();
 
-            entity.Property(e => e.BatchDate)
-                .HasMaxLength(1)
-                .IsUnicode(false)
-                .HasColumnName("batch_date");
             entity.Property(e => e.Status)
                 .HasMaxLength(1)
                 .IsUnicode(false);
-            entity.Property(e => e.VbatchDate)
-                .HasColumnType("datetime")
-                .HasColumnName("Vbatch_date");
-            entity.Property(e => e.Wdate)
-                .HasColumnType("datetime")
-                .HasColumnName("WDate");
-            entity.Property(e => e.Wdate1)
+            entity.Property(e => e.Vbatch_date).HasColumnType("datetime");
+            entity.Property(e => e.WDate).HasColumnType("datetime");
+            entity.Property(e => e.WDate1)
                 .HasMaxLength(8)
-                .IsUnicode(false)
-                .HasColumnName("WDate1");
+                .IsUnicode(false);
+            entity.Property(e => e.batch_date)
+                .HasMaxLength(1)
+                .IsUnicode(false);
         });
 
         OnModelCreatingPartial(modelBuilder);

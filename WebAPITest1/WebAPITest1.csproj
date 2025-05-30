@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="efpt.config.json.user" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.5">
       <PrivateAssets>all</PrivateAssets>
@@ -16,6 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="iit.System.Data">
+      <HintPath>..\..\..\TSB2\Product\iit SDK For Win-Web\iit.System.Data\iit.System.Data\bin\Release\iit.System.Data.dll</HintPath>
+    </Reference>
     <Reference Include="iitDataWeb">
       <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitDataWeb\bin\Release\net9.0\iitDataWeb.dll</HintPath>
     </Reference>
@@ -27,6 +34,9 @@
     </Reference>
     <Reference Include="iitSystemWeb">
       <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitSystemWeb\bin\Release\net9.0\iitSystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="iitToolsWeb">
+      <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iiitToolsWeb\bin\Release\net9.0\iitToolsWeb.dll</HintPath>
     </Reference>
   </ItemGroup>
 

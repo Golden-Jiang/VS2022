@@ -25,13 +25,13 @@ public partial class WebTeleNo
 
     public int? TotalGetCallNo { get; set; }
 
-    public string Ip { get; set; }
+    public string IP { get; set; }
 
-    public string Qrcode { get; set; }
+    public string QRCode { get; set; }
 
-    public DateTime? QrcodeStartTime { get; set; }
+    public DateTime? QRCodeStartTime { get; set; }
 
     public int? TotalForm { get; set; }
 
-    public string Rfu { get; set; }
+    public string RFU { get; set; }
 }

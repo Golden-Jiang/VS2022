@@ -15,29 +15,29 @@ public partial class BranchComputer
 
     public long RecSerialNo { get; set; }
 
-    public string BankId { get; set; }
+    public string BankID { get; set; }
 
-    public string BranchGroupId { get; set; }
+    public string BranchGroupID { get; set; }
 
-    public string BranchId { get; set; }
+    public string BranchID { get; set; }
 
-    public string ComputerId { get; set; }
+    public string ComputerID { get; set; }
 
     public string ComputerName { get; set; }
 
-    public string ComputerIp { get; set; }
+    public string ComputerIP { get; set; }
 
     public string ComputerType { get; set; }
 
     public string MacAddress { get; set; }
 
-    public string Cpu { get; set; }
+    public string CPU { get; set; }
 
     public string Disk { get; set; }
 
     public string RemainMemory { get; set; }
 
-    public string Os { get; set; }
+    public string OS { get; set; }
 
     public string TemplateNo { get; set; }
 
@@ -47,7 +47,7 @@ public partial class BranchComputer
 
     public DateTime? PlayListTime { get; set; }
 
-    public string ScreenId { get; set; }
+    public string ScreenID { get; set; }
 
     public string ProgramVersion { get; set; }
 
@@ -55,5 +55,5 @@ public partial class BranchComputer
 
     public DateTime? ProgramTime { get; set; }
 
-    public string Rfu { get; set; }
+    public string RFU { get; set; }
 }
