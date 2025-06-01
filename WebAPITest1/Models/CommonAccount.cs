@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebAPITest1.Models;
 
-public partial class WebTeleNo
+public partial class CommonAccount
 {
     public int RecordControl { get; set; }
 
@@ -19,21 +19,9 @@ public partial class WebTeleNo
 
     public string TeleNo { get; set; }
 
+    public string AccountType { get; set; }
+
     public string AccountNo { get; set; }
 
-    public DateTime? LastGetCallNoTime { get; set; }
-
-    public int? TotalGetCallNo { get; set; }
-
-    public string IP { get; set; }
-
-    public string QRCode { get; set; }
-
-    public DateTime? QRCodeStartTime { get; set; }
-
-    public int? TotalForm { get; set; }
-
     public string RFU { get; set; }
-
-    public string CustID { get; set; }
 }

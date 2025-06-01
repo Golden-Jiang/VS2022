@@ -64,11 +64,17 @@ namespace WebAPITest1.Controllers
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "ND", ref TmpString2 ) ) != "" )
                                 TmpString2  =   "";
 
-                            //if( TmpString2.Length == 0 )
-                            ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _httpContextAccessor );
-                                //else
-                                //    ReturnValue =   AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2 );
+                            if( TmpString2.Length == 0 )
+                                ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _httpContextAccessor );
+                            else
+                                ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _httpContextAccessor  );
+                            break;
+                        case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
+                            if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
                                 break;
+                            
+                            ReturnValue = AccountService.GetForexAccountFromTeleNo( TmpString1, _DBContext, _httpContextAccessor  );
+                            break;
                         //                        case    "SA013101"      :   // 變更綁定電話號碼
                         //                            if( ( ReturnValue = Utility.CheckGetParameter( ControllerContext, APIResult, "ND", ref TmpString1 ) ) != "" )
                         //                                break;
@@ -84,12 +90,6 @@ namespace WebAPITest1.Controllers
                         //                                ReturnValue =   AccountService.ChangeTeleNoNetBank( TmpString1, TmpString2, TmpString3 );
                         //                            } // end of lock( Global.AccountMutex )
                         //                            break;
-                        //case "SA013001F":   // 依據電話號碼讀取外幣綁定常用帳號
-                        //    if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
-                        //        break;
-                        //    //
-                        //    ReturnValue = AccountService.GetForexAccountFromTeleNo( TmpString1 );
-                        //    break;
                         //                        case    "SA013002"      :   // 儲存電話號碼的台幣綁定常用帳號
                         //                            if( ( ReturnValue = Utility.CheckGetParameter( ControllerContext, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
                         //                                break;

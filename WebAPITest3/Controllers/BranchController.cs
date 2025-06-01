@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI_Test_3.Models;
+using WebAPITest3.Service;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,17 +11,21 @@ namespace WebAPI_Test_3.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-       private readonly DBContext _DBContext;
+       public readonly ILog1 _Log;
+       public readonly DBContext _DBContext;
+       public readonly IHttpContextAccessor _httpContextAccessor;
 
-       public BranchController(DBContext dBContext)
+       public BranchController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, ILog1 Log )
        {
-            _DBContext = dBContext;
+            _Log = Log; 
+            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext);
         }
 
         // GET: <BranchController>
         [HttpGet]
         public Branch Get()
         {
+            _Log.WriteLog( "Hello Log" );
             return _DBContext.Branch.FirstOrDefault();
         }
 

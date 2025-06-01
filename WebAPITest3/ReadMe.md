@@ -10,10 +10,11 @@
 # 主要功能
   ## 示範用 Entity Framework (EF) 操作資料庫
   ## 示範使用 iitSDKWeb
-  ## iitSystemWeb.SystemTools.SetClientIP 範例
+  ## iitToolsWeb.SetClientIP 範例
   ## iitMSGWeb.HTTPMSG 範例
   ## iitDataWeb.iitAPIResultClass 範例
   ## iitLogWeb.ILog iLog = new iitLogWeb.ILog() 範例
   ## iLog.WriteLog(...) 範例
   ## response iitAPIResultClass 範例
   ## try...catch 範例
+  ## iLog 改用依賴注入

@@ -1,5 +1,6 @@
 using iitSystemWeb;
 using Microsoft.AspNetCore.Mvc;
+using WebAPI_Test_3.Models;
 
 namespace WebAPI_Test_3.Controllers
 {
@@ -12,14 +13,12 @@ namespace WebAPI_Test_3.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
         
-        private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IHttpContextAccessor _httpContextAccessor;
+       public readonly DBContext _DBContext;
+       public readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WeatherForecastController( IHttpContextAccessor httpContextAccessor, ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(  IHttpContextAccessor httpContextAccessor, DBContext dBContext )
         {
-            Static.httpContextAccessor = httpContextAccessor;
-            SystemTools.SetClientIP(httpContextAccessor);
-            _logger = logger;
+            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext);
         }
 
         [HttpGet]

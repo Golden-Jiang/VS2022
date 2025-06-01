@@ -23,7 +23,31 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[ChangeCustIDTeleNo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CommonAccount]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[SystemParameter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanBank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanBankBranch]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanCity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanZone]",
          "ObjectType": 0
       },
       {

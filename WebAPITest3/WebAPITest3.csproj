@@ -27,6 +27,9 @@
     <Reference Include="iitSystemWeb">
       <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iitSystemWeb\bin\Release\net9.0\iitSystemWeb.dll</HintPath>
     </Reference>
+    <Reference Include="iitToolsWeb">
+      <HintPath>..\..\..\TSB2\Product\iitSDKWeb\iiitToolsWeb\bin\Release\net9.0\iitToolsWeb.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

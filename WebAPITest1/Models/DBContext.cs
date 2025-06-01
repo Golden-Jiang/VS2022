@@ -17,7 +17,19 @@ public partial class DBContext : DbContext
 
     public virtual DbSet<BranchComputer> BranchComputer { get; set; }
 
+    public virtual DbSet<ChangeCustIDTeleNo> ChangeCustIDTeleNo { get; set; }
+
+    public virtual DbSet<CommonAccount> CommonAccount { get; set; }
+
     public virtual DbSet<SystemParameter> SystemParameter { get; set; }
+
+    public virtual DbSet<TaiwanBank> TaiwanBank { get; set; }
+
+    public virtual DbSet<TaiwanBankBranch> TaiwanBankBranch { get; set; }
+
+    public virtual DbSet<TaiwanCity> TaiwanCity { get; set; }
+
+    public virtual DbSet<TaiwanZone> TaiwanZone { get; set; }
 
     public virtual DbSet<WebTeleNo> WebTeleNo { get; set; }
 
@@ -146,6 +158,71 @@ public partial class DBContext : DbContext
                 .IsUnicode(false);
         });
 
+        modelBuilder.Entity<ChangeCustIDTeleNo>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__ChangeCu__FB760702582C6695");
+
+            entity.HasIndex(e => e.CustID, "Index_01");
+
+            entity.HasIndex(e => e.OldTeleNo, "Index_02");
+
+            entity.HasIndex(e => e.NewTeleNo, "Index_03");
+
+            entity.HasIndex(e => e.Result, "Index_04");
+
+            entity.HasIndex(e => new { e.CustID, e.CreateTime }, "Index_05");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CustID)
+                .IsRequired()
+                .HasMaxLength(20);
+            entity.Property(e => e.NewTeleNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.OldTeleNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(10);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<CommonAccount>(entity =>
+        {
+            entity.HasKey(e => e.TeleNo).HasName("PK__CommonAc__B6081DD0E7B6063F");
+
+            entity.HasIndex(e => e.TeleNo, "Index_01").IsUnique();
+
+            entity.HasIndex(e => e.AccountType, "Index_02");
+
+            entity.HasIndex(e => e.AccountNo, "Index_03");
+
+            entity.HasIndex(e => e.CreateTime, "Index_04");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.TeleNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.AccountNo)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.AccountType)
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
+            entity.Property(e => e.RFU).HasMaxLength(50);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+        });
+
         modelBuilder.Entity<SystemParameter>(entity =>
         {
             entity.HasKey(e => e.RecSerialNo).HasName("PK__SystemPa__FB760702FB8AF3CF");
@@ -174,6 +251,92 @@ public partial class DBContext : DbContext
             entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
         });
 
+        modelBuilder.Entity<TaiwanBank>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo);
+
+            entity.HasIndex(e => e.BankID, "Index_01").IsUnique();
+
+            entity.Property(e => e.RecSerialNo).ValueGeneratedNever();
+            entity.Property(e => e.BankID)
+                .IsRequired()
+                .HasMaxLength(3)
+                .IsUnicode(false);
+            entity.Property(e => e.BankName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.RFU).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<TaiwanBankBranch>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__TaiwanBa__FB76070267118A4C");
+
+            entity.HasIndex(e => new { e.BankID, e.BranchID }, "Index_01").IsUnique();
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.BankID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.BranchID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.BranchName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<TaiwanCity>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__TaiwanCi__FB76070288CDD5DA");
+
+            entity.Property(e => e.CityCode)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+            entity.Property(e => e.CityName)
+                .IsRequired()
+                .HasMaxLength(10);
+            entity.Property(e => e.RFU)
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TelArea)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<TaiwanZone>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__TaiwanZo__FB760702757D4D27");
+
+            entity.Property(e => e.CityCode)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+            entity.Property(e => e.PostCode)
+                .IsRequired()
+                .HasMaxLength(5)
+                .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.ZoneCode)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+            entity.Property(e => e.ZoneName)
+                .IsRequired()
+                .HasMaxLength(10);
+        });
+
         modelBuilder.Entity<WebTeleNo>(entity =>
         {
             entity.HasKey(e => e.TeleNo).HasName("PK__WebTeleN__B6081DD0A8CE5254");
@@ -199,6 +362,9 @@ public partial class DBContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CustID)
+                .HasMaxLength(20)
+                .IsUnicode(false);
             entity.Property(e => e.IP)
                 .IsRequired()
                 .HasMaxLength(70)

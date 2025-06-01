@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI_Test_3.Models;
+using WebAPITest3.Service;
 
 namespace WebAPI_Test_3
 {
@@ -15,10 +16,20 @@ namespace WebAPI_Test_3
 
             // 註冊 IHttpContextAccessor
             builder.Services.AddHttpContextAccessor();
+
+            // 依賴注入 Logger
+            //builder.Services.AddScoped<ILog1, Logger>();
+            builder.Services.AddScoped<ILog1>( sp =>
+            {
+	            var msg = "Startup";
+	            return new Logger(msg);            
+            });
+            
             // 定義 IConfiguration
             IConfiguration configuration = builder.Configuration;
+
             // iitSDKWeb 系統啟動
-            Utility.Start(configuration);
+            Utility.Start(configuration, null);
            
             builder.Services.AddControllersWithViews();
 

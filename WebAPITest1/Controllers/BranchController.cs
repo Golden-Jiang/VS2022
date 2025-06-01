@@ -33,8 +33,8 @@ namespace WebAPITest1.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-       private readonly     DBContext _DBContext;
-       private readonly     IHttpContextAccessor _httpContextAccessor;
+       //private readonly     DBContext _DBContext;
+       //private readonly     IHttpContextAccessor _httpContextAccessor;
 
        public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
        {
