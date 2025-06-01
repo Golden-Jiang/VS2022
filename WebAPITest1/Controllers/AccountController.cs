@@ -67,8 +67,8 @@ namespace WebAPITest1.Controllers
 
                             if( TmpString2.Length == 0 )
                                 ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _Log, _httpContextAccessor );
-                            else
-                                ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _Log, _httpContextAccessor  );
+                            //else
+                            //    ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _Log, _httpContextAccessor  );
                             break;
                         case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
@@ -161,11 +161,11 @@ namespace WebAPITest1.Controllers
                         default:   // Undefine API
                             iitDataTools.SetResponseResult<string>( APIResult, "1000", $"{iitMSG.APIError.E1000} {TxCode}", "" );
                             ReturnValue =   JsonConvert.SerializeObject( APIResult );
-//
+
                             _Log.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
                             break;
                     } // end of switch( TxCode )
-//
+ 
                     break;
                 } // end of while( true )
             } // end of try
@@ -173,11 +173,11 @@ namespace WebAPITest1.Controllers
             {
                 _Log.except  =   except;
                 _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
-//
+
                 iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 ReturnValue =   JsonConvert.SerializeObject( APIResult );
             } // end of catch
-//
+
             return ReturnValue;
         } // end of public string Get()
 
