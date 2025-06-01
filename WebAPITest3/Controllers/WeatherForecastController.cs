@@ -1,3 +1,4 @@
+using iitLogWeb;
 using iitSystemWeb;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Test_3.Models;
@@ -13,12 +14,14 @@ namespace WebAPI_Test_3.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
         
+       public readonly IiitLog _Log;
        public readonly DBContext _DBContext;
        public readonly IHttpContextAccessor _httpContextAccessor;
 
-        public WeatherForecastController(  IHttpContextAccessor httpContextAccessor, DBContext dBContext )
+        public WeatherForecastController(  IHttpContextAccessor httpContextAccessor, DBContext dBContext, IiitLog Log )
         {
-            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext);
+            _Log = Log; 
+            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext, _Log );
         }
 
         [HttpGet]

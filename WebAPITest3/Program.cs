@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebAPI_Test_3.Models;
-using WebAPITest3.Service;
+using iitLogWeb;
+using Microsoft.IdentityModel.Tokens;
 
 namespace WebAPI_Test_3
 {
@@ -19,17 +20,13 @@ namespace WebAPI_Test_3
 
             // 依賴注入 Logger
             //builder.Services.AddScoped<ILog1, Logger>();
-            builder.Services.AddScoped<ILog1>( sp =>
-            {
-	            var msg = "Startup";
-	            return new Logger(msg);            
-            });
+            builder.Services.AddTransient<IiitLog, iitLog>();
             
             // 定義 IConfiguration
             IConfiguration configuration = builder.Configuration;
 
             // iitSDKWeb 系統啟動
-            Utility.Start(configuration, null);
+            Utility.Start( configuration );
            
             builder.Services.AddControllersWithViews();
 

@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Test_3.Models;
-using WebAPITest3.Service;
+using iitLogWeb;
+using iitSystemWeb;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,21 +12,22 @@ namespace WebAPI_Test_3.Controllers
     [ApiController]
     public class BranchController : ControllerBase
     {
-       public readonly ILog1 _Log;
+       public readonly IiitLog _Log;
        public readonly DBContext _DBContext;
        public readonly IHttpContextAccessor _httpContextAccessor;
+       private string _ClientIP;
 
-       public BranchController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, ILog1 Log )
+       public BranchController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, IiitLog Log )
        {
             _Log = Log; 
-            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext);
+            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext, _Log );
         }
 
         // GET: <BranchController>
         [HttpGet]
         public Branch Get()
         {
-            _Log.WriteLog( "Hello Log" );
+            _Log.WriteLog( "aaa", iitConst.LOG.INFO, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
             return _DBContext.Branch.FirstOrDefault();
         }
 
