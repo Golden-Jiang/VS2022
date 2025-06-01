@@ -30,12 +30,14 @@ namespace WebAPITest1.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
+       public readonly IiitLog _Log;
        public readonly DBContext _DBContext;
        public readonly IHttpContextAccessor _httpContextAccessor;
 
-       public AccountController( IHttpContextAccessor httpContextAccessor, DBContext dBContext )
+       public AccountController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, IiitLog Log )
        {
-            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext);
+            _Log = Log; 
+            Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext, _Log );
         } // end of public BranchController(IHttpContextAccessor
         
         // GET: http://url/Branch?Query1=.....
@@ -44,9 +46,8 @@ namespace WebAPITest1.Controllers
         {
             string              ReturnValue = "";
             string              TxCode = "";
-            string              TmpString1 = "", TmpString2 = "", TmpString3 = "", TmpString4 = "";
+            string              TmpString1 = "", TmpString2 = "";
             iitAPIResultClass   APIResult = new iitAPIResultClass();
-            ILog                iLog =   new ILog( _httpContextAccessor );
  
             try
             {
@@ -65,15 +66,15 @@ namespace WebAPITest1.Controllers
                                 TmpString2  =   "";
 
                             if( TmpString2.Length == 0 )
-                                ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _httpContextAccessor );
+                                ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _Log, _httpContextAccessor );
                             else
-                                ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _httpContextAccessor  );
+                                ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _Log, _httpContextAccessor  );
                             break;
                         case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
                                 break;
                             
-                            ReturnValue = AccountService.GetForexAccountFromTeleNo( TmpString1, _DBContext, _httpContextAccessor  );
+                            ReturnValue = AccountService.GetForexAccountFromTeleNo( TmpString1, _DBContext, _Log, _httpContextAccessor  );
                             break;
                         //                        case    "SA013101"      :   // 變更綁定電話號碼
                         //                            if( ( ReturnValue = Utility.CheckGetParameter( ControllerContext, APIResult, "ND", ref TmpString1 ) ) != "" )
@@ -161,7 +162,7 @@ namespace WebAPITest1.Controllers
                             iitDataTools.SetResponseResult<string>( APIResult, "1000", $"{iitMSG.APIError.E1000} {TxCode}", "" );
                             ReturnValue =   JsonConvert.SerializeObject( APIResult );
 //
-                            iLog.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                            _Log.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
                             break;
                     } // end of switch( TxCode )
 //
@@ -170,8 +171,8 @@ namespace WebAPITest1.Controllers
             } // end of try
             catch( Exception except )
             {
-                iLog.Log.except  =   except;
-                iLog.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                _Log.except  =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
 //
                 iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 ReturnValue =   JsonConvert.SerializeObject( APIResult );

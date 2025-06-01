@@ -43,13 +43,12 @@ namespace WebAPITest1
         /// <param name="httpContextAccessor"></param>
         /// <returns></returns>
         /// <exception cref="iitException"></exception>
-        public static string GetAccountFromTeleNo( string TeleNo, DBContext _DBContext, IHttpContextAccessor httpContextAccessor )
+        public static string GetAccountFromTeleNo( string TeleNo, DBContext _DBContext, IiitLog _Log, IHttpContextAccessor _httpContextAccessor )
         {
-            string                  SQLCommand = "";
+            string                  SQLCommand = "", ClientIP = _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
-            ILog                    iLog = new ILog( httpContextAccessor );
  
             try
             {
@@ -73,7 +72,7 @@ namespace WebAPITest1
                                     //}).FirstOrDefault();
 
                     SQLCommand  =   $"SELECT * FROM WebTeleNo WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
-                    iLog.WriteLog( $"{SQLCommand}, result rows={result1.Count()}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                    _Log.WriteLog( $"{SQLCommand}, result rows={result1.Count()}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                     //var result11 = result1.ToList();
                     //if( result11.Count != 0 )
@@ -95,15 +94,15 @@ namespace WebAPITest1
                             std.RecordControl           =   2;
                             std.RecordControlDateTime   =   TmpDateTime1;
                             std.LastAccessTime          =   TmpDateTime1;
-                            std.IP                      =   httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
+                            std.IP                      =   ClientIP;
                         } // end of foreach( var std in result1 )
 
                         _DBContext.SaveChanges();
 
                         SQLCommand  =   String.Format( "Update WebTeleNo SET RecordControl=2, RecordControlDateTime='{0}', LastAccessTime='{1}', IP='{2}' WHERE TeleNo='{3}'", 
                                         TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), 
-                                        httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString(), TeleNo );
-                        iLog.WriteLog( "SQLCommand=" + SQLCommand, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                                        ClientIP, TeleNo );
+                        _Log.WriteLog( "SQLCommand=" + SQLCommand, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                         var result2 =   from a in _DBContext.SystemParameter
                                         where a.FuncParamID == "WEBAPI" && a.ParameterCode == "0002"
@@ -115,7 +114,7 @@ namespace WebAPITest1
                             CustomerClass.TeleAccount.MaxForm    =   "10";
 
                         SQLCommand  =   "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode"; 
-                        iLog.WriteLog( $"SQLCommand={SQLCommand} result rows={result2.Count()}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                        _Log.WriteLog( $"SQLCommand={SQLCommand} result rows={result2.Count()}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
                     } // end of if( SQLError == string.Empty && RecordCount > 0 )
                     else
                     { 
@@ -130,7 +129,7 @@ namespace WebAPITest1
                             AccountNo = "",
                             TotalGetCallNo = 0,
                             LastGetCallNoTime = TmpDateTime1,
-                            IP = httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString(),
+                            IP = ClientIP,
                             TotalForm = 0
                         };
 
@@ -140,8 +139,8 @@ namespace WebAPITest1
                         SQLCommand  =   String.Format( "INSERT INTO WebTeleNo ( RecordControl, RecordControlDateTime, Enabled, CreateTime, LastAccessTime, TeleNo, AccountNo, " + 
                                         " TotalGetCallNo, LastGetCallNoTime, IP, TotalForm ) VALUES ( 1, '{0}', 1, '{1}', '{2}', '{3}', '', 0, '{4}', '{5}', 0 )", 
                                         TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ),
-                                        TeleNo, TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
-                        iLog.WriteLog( "SQLCommand=" + SQLCommand, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                                        TeleNo, TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" ), ClientIP );
+                        _Log.WriteLog( "SQLCommand=" + SQLCommand, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
  
                         CustomerClass.TeleAccount.AccountNo         =   "";
                         CustomerClass.TeleAccount.TotalGetCallNo    =   "";
@@ -157,8 +156,8 @@ namespace WebAPITest1
             {
                 if( except.GetType() != typeof( iitException ) )
                 {
-                    iLog.Log.except =   except;
-                    iLog.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                    _Log.except =   except;
+                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, ClientIP );
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
@@ -172,16 +171,15 @@ namespace WebAPITest1
         /// <param name="CustID"></param>
         /// <returns></returns>
         /// <exception cref="iitException"></exception>
-        public static string GetAccountFromTeleNoNetBank( string TeleNo, string CustID, DBContext _DBContext, IHttpContextAccessor httpContextAccessor )
+        public static string GetAccountFromTeleNoNetBank( string TeleNo, string CustID, DBContext _DBContext, IiitLog _LOg, IHttpContextAccessor _httpContextAccessor )
         {
             string                  TmpString1 = "", TmpString2 = "";
             int                     Result = 9; // API 作業錯誤
             int                     AddTeleNo = 0, Exist = 9;
-            string                  SQLCommand = "";
+            string                  SQLCommand = "", ClientIP = _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
-            ILog                    iLog = new ILog( httpContextAccessor );
 
             try
             {
@@ -322,13 +320,12 @@ namespace WebAPITest1
         /// <param name="TeleNo"></param>
         /// <returns></returns>
         /// <exception cref="iitException"></exception>
-        public static string GetForexAccountFromTeleNo( string TeleNo, DBContext _DBContext, IHttpContextAccessor httpContextAccessor  )
+        public static string GetForexAccountFromTeleNo( string TeleNo, DBContext _DBContext, IiitLog _Log, IHttpContextAccessor _httpContextAccessor  )
         {
-            string                  SQLCommand = "";
+            string                  SQLCommand = "", ClientIP = _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
-            ILog                    iLog = new ILog( httpContextAccessor );
 
             try
             {
@@ -342,7 +339,7 @@ namespace WebAPITest1
                                     select a;
 
                     SQLCommand  =   $"SELECT * FROM CommonAccount WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
-                    iLog.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                    _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 //
                     if( result1.Count() != 0 )
                     {
@@ -362,7 +359,7 @@ namespace WebAPITest1
 
                         SQLCommand  =   $"UPDATE CommonAccount SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}, " +
                                         $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}' WHERE TeleNo='{TeleNo}";
-                        iLog.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                        _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
                     } // end of if( SQLError == string.Empty && RecordCount > 0 )
                     else
                     { 
@@ -384,7 +381,7 @@ namespace WebAPITest1
                         SQLCommand  =   $"INSERT INTO CommonAccount ( RecordControl, RecordControlDateTime, Enabled, CreateTime, LastAccessTime, TeleNo, AccountType, AccountNo, RFU ) " + 
                                         $"VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}, " + 
                                         $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{TeleNo}', 'F', '', '' )"; 
-                        iLog.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                        _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                         CustomerClass.TeleAccount.AccountNo         =   "";
                         CustomerClass.TeleAccount.TotalGetCallNo    =   "";
@@ -400,15 +397,14 @@ namespace WebAPITest1
             {
                 if( except.GetType() != typeof( iitException ) )
                 {
-                    iLog.Log.except =   except;
-                    iLog.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
+                    _Log.except =   except;
+                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, ClientIP );
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             return JsonConvert.SerializeObject( APIResult );
         } // end of GetForexAccountFromTeleNo( ... )
-
     } // end of public class AccountService
 } // end of namespace WebAPITest1
 //===================================================================================================

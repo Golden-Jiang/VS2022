@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\utility\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\service\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\service\\logger.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -28,8 +40,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAQwCQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:25:38.128Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -52,7 +77,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T08:16:10.653Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "ReadMe.md",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\ReadMe.md",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\ReadMe.md",
@@ -65,7 +103,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
+              "RelativeDocumentMoniker": "AccountService.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
+              "RelativeToolTip": "AccountService.cs",
+              "ViewState": "AgIAAHQBAAAAAAAAAAAowJcBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T03:52:57.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Logger.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Service\\Logger.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\Service\\Logger.cs",
@@ -78,20 +129,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\Program.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Program.cs",
               "RelativeToolTip": "..\\WebAPITest3\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA2wB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T02:20:05.003Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "WeatherForecastController.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\Controllers\\WeatherForecastController.cs",
@@ -104,26 +155,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "BranchController.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Controllers\\BranchController.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\Controllers\\BranchController.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Controllers\\BranchController.cs",
               "RelativeToolTip": "..\\WebAPITest3\\Controllers\\BranchController.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAArwB0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAoAAAAAAAAAAAArwBwAAACQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T02:16:20.474Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Utility.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Utility\\Utility.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\Utility\\Utility.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\Utility\\Utility.cs",
               "RelativeToolTip": "..\\WebAPITest3\\Utility\\Utility.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAIAzwDkAAAACAAAAAAAAAA==",
+              "ViewState": "AgIAABwAAAAAAAAAAAAmwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T02:12:48.588Z",
               "EditorCaption": ""

@@ -15,10 +15,8 @@ using WebAPITest1.Models;
 //
 // iitSDKWeb
 //
-//using iitSystemWeb;
-//using iitLogWeb;
-//using iitDataWeb;
-//using iitMSGWeb;
+using iitLogWeb;
+using iitToolsWeb;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -37,11 +35,15 @@ namespace WebAPITest1
             // 註冊 IHttpContextAccessor
             builder.Services.AddHttpContextAccessor();
 
+            // 依賴注入 Logger
+            //builder.Services.AddScoped<ILog1, Logger>();
+            builder.Services.AddScoped<IiitLog, iitLog>();
+
             // 定義 IConfiguration
             IConfiguration configuration = builder.Configuration;
 
             // iitSDKWeb 系統啟動
-            Utility.Start(configuration, null);
+            iitSystemTools.SystemStart( configuration );
            
             builder.Services.AddControllersWithViews();
 

@@ -15,7 +15,6 @@ namespace WebAPI_Test_3.Controllers
        public readonly IiitLog _Log;
        public readonly DBContext _DBContext;
        public readonly IHttpContextAccessor _httpContextAccessor;
-       private string _ClientIP;
 
        public BranchController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, IiitLog Log )
        {

@@ -28,21 +28,6 @@ namespace WebAPI_Test_3
 {
     public class Utility
     {
-        /// <summary>
-        /// 系統啟動時, 設定 iitSDKWeb 相關全域資料與環境
-        /// </summary>
-        /// <param name="config"></param>
-        public static void Start( IConfiguration config )
-        {
-            // 系統啟動
-            iitSystemTools.SystemStart( config );
-
-            // 初始化系統公用訊息
-            iitMSG.Start();
-
-            Static.SystemStartMesage = $"WebAPI System Start at {DateTime.Now.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}";
-        } // end of public static void InitStatic( IConfiguration config, ...)
-
         public static void SetClientEnvironment( IHttpContextAccessor httpContextAccessor, ref IHttpContextAccessor _httpContextAccessor, 
                                                  DBContext dBContext, ref DBContext _DBContext, IiitLog _Log )
         {
