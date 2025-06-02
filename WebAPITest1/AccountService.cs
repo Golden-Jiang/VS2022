@@ -71,7 +71,7 @@ namespace WebAPITest1
                                     //    a.TotalGetCallNo, 
                                     //    a.TotalForm 
                                     //}).FirstOrDefault();
-                    var result1 = _DBContext.WebTeleNo.SingleOrDefault<WebTeleNo>( p => p.TeleNo == TeleNo );  
+                    var result1 = _DBContext.WebTeleNo.FirstOrDefault<WebTeleNo>( p => p.TeleNo == TeleNo );  
 
                     SQLCommand  =   $"SELECT * FROM WebTeleNo WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
                     _Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
@@ -110,7 +110,7 @@ namespace WebAPITest1
                                         $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', IP='{ClientIP}' WHERE TeleNo='{TeleNo}'"; 
                         _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
-                        var result2 =   _DBContext.SystemParameter.SingleOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
+                        var result2 =   _DBContext.SystemParameter.FirstOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
 
                         if( result2 != null )
                             CustomerClass.TeleAccount.MaxForm   =   result2.ParameterValue;
@@ -168,6 +168,7 @@ namespace WebAPITest1
 
             return JsonConvert.SerializeObject( APIResult );
         } // end of GetAccountFromTeleNo( ... )
+
         /// <summary>
         /// 依據電話號碼讀取台幣綁定常用帳號
         /// </summary>
@@ -184,7 +185,6 @@ namespace WebAPITest1
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
-            string                  TmpString1 = "", TmpString2 = "";
             int                     ProcessResult = 0;
             int                     Result = 9; // API 作業錯誤
             int                     AddTeleNo = 0, Exist = 9;
@@ -197,12 +197,12 @@ namespace WebAPITest1
                         throw new iitException( "" );
 
                     // 以網銀帳號讀取對應的電話號碼
-                    var result1 =   _DBContext.WebTeleNo.Find( CustID, TeleNo );
+                    var result1 =   _DBContext.WebTeleNo.FirstOrDefault( p => p.CustID == CustID && p.TeleNo == TeleNo );
  
                     SQLCommand = $"SELECT * FROM WebTeleNo WHERE CustID='{HttpUtility.HtmlDecode( CustID )}' AND TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
                     _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
-                    if( result1!= null )
+                    if( result1 != null )
                     {
                         // 帳號與電話號碼對應相同
                         CustomerClass.TeleAccount.TeleNo            = result1.TeleNo;
@@ -218,7 +218,7 @@ namespace WebAPITest1
                         _DBContext.WebTeleNo.Update( result1 );
                         _DBContext.SaveChanges();
 
-                        SQLCommand = $"UPDATE WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
+                        SQLCommand =    $"UPDATE WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
                                         $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', IP='{ClientIP}' " +
                                         $"WHERE TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
                         _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
@@ -265,14 +265,40 @@ namespace WebAPITest1
                                 if( ! ChangeTeleNoDB( ProcessResult, "", TeleNo, CustID, "", "", _DBContext, APIResult, _Log, ClientIP ) )
                                     break;
 
-                                SQLCommand = $"UPDATE WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
-                                                $"QRCode='', AccountNo='', LastGetCallNoTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', TotalGetCallNo=0, " +
-                                                $"IP='{HttpContext.Current.Request.UserHostAddress}', QRCodeStartTime='{TmpDateTime1.ToString( "yyyy/MM/dd" )}', " +
-                                                $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
-                                                $"TotalForm=0, CustID='{CustID}' WHERE TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
-                                iitDB.ExecuteNonQuery( SQLCommand, out SQLError, ref APIResult.RespCode, ref APIResult.RespDesc );
-                                iitLog.WriteLog( iLog, "SQLCommand=" + SQLCommand + ", SQLError=" + SQLError, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
-                                Utility.CheckSQLResult( SQLError );
+                                var result2 =   _DBContext.WebTeleNo.FirstOrDefault( p => p.TeleNo == TeleNo );
+ 
+                                SQLCommand = $"SELECT * FROM WebTeleNo WHERE TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
+                                _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+
+                                if( result2 != null )
+                                {
+                                    CustomerClass.TeleAccount.TeleNo            = result2.TeleNo;
+                                    CustomerClass.TeleAccount.AccountNo         = result2.AccountNo;
+                                    CustomerClass.TeleAccount.TotalGetCallNo    = result2.TotalGetCallNo.ToString();
+                                    CustomerClass.TeleAccount.TotalForm         = result2.TotalForm.ToString();
+
+                                    result2.RecordControl           =    2;
+                                    result2.RecordControlDateTime   =   TmpDateTime1;
+                                    result2.LastAccessTime          =   TmpDateTime1;
+                                    result2.QRCode                  =   "";
+                                    result2.AccountNo               =   "";
+                                    result2.LastGetCallNoTime       =   TmpDateTime1;
+                                    result2.TotalGetCallNo          =   0;
+                                    result2.IP                      =   ClientIP;
+                                    result2.QRCodeStartTime         =   TmpDateTime1;
+                                    result2.TotalForm               =   0;
+                                    result2.CustID                  =   CustID;
+
+                                    _DBContext.WebTeleNo.Update( result1 );
+                                    _DBContext.SaveChanges();
+
+                                    SQLCommand =    $"UPDATE WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
+                                                    $"QRCode='', AccountNo='', LastGetCallNoTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', TotalGetCallNo=0, " +
+                                                    $"IP='{ClientIP}', QRCodeStartTime='{TmpDateTime1.ToString( "yyyy/MM/dd" )}', " +
+                                                    $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
+                                                    $"TotalForm=0, CustID='{CustID}' WHERE TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
+                                    _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                                } // end of if( result1!= null )
 
                                 Exist = 1;
                                 Result = 1;
@@ -297,23 +323,22 @@ namespace WebAPITest1
                         if( ProcessResult < 0 )
                             break;
 
-                        APIResult.TeleAccount.AccountNo = "";
-                        APIResult.TeleAccount.TotalGetCallNo = "";
-                        APIResult.TeleAccount.TotalForm = "";
+                        CustomerClass.TeleAccount.AccountNo         = "";
+                        CustomerClass.TeleAccount.TotalGetCallNo    = "";
+                        CustomerClass.TeleAccount.TotalForm         = "";
 
-                        SQLCommand = "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode";
-                        ds = iitDB.GetDataSet( SQLCommand, out RecordCount, out SQLError, ref APIResult.RespCode, ref APIResult.RespDesc );
-                        iitLog.WriteLog( iLog, "SQLCommand=" + SQLCommand + ", RecordCount=" + RecordCount.ToString(), iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
-                        if( SQLError == string.Empty && RecordCount > 0 )
-                            APIResult.TeleAccount.MaxForm = ds.Tables [ 0 ].Rows [ 0 ] [ "ParameterValue" ].ToString().Trim();
+                        var result3 =   _DBContext.SystemParameter.FirstOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
+
+                        if( result3 != null )
+                            CustomerClass.TeleAccount.MaxForm   =   result3.ParameterValue;
                         else
-                        {
-                            Utility.CheckSQLResult( SQLError );
-                            APIResult.TeleAccount.MaxForm = "10";
-                        } // end of if( SQLError == string.Empty && RecordCount > 0 )
+                            CustomerClass.TeleAccount.MaxForm    =   "10";
+
+                        SQLCommand  =   "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode"; 
+                        _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
                     } // end of else if( SQLError == string.Empty && RecordCount > 0 ) 
 
-                    Utility.SetResponseResult( APIResult, "0000", "交易成功" );
+                    iitDataTools.SetResponseResult<string>( APIResult, "0000", iitMSG.HTTPMSG[ iitMSG.CODE.HTTP.SUCCESS ], "" );
 
                     break;
                 } // end of while( true )
@@ -323,31 +348,33 @@ namespace WebAPITest1
                 if( except.GetType() != typeof( iitException ) )
                 {
                     Result = 9;
-                    iLog.except = except;
-                    iitLog.WriteLog( iLog, "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST );
-                    Utility.SetResponseResult( APIResult, "8000", "WebAPI 作業錯誤" );
+                    _Log.except =   except;
+                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, ClientIP );
+                    iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             // Insert into ChangeCustIDTeleNo
-            if( AddTeleNo == 1 && SQLError.Length == 0 )
+            if( AddTeleNo == 1 )
             {
-                SQLCommand = $"INSERT INTO ChangeCustIDTeleNo ( RecordControl, RecordControlDateTime, Enabled, CreateTime, CustID, OldTeleNo, " +
+                SQLCommand =    $"INSERT INTO ChangeCustIDTeleNo ( RecordControl, RecordControlDateTime, Enabled, CreateTime, CustID, OldTeleNo, " +
                                 $"NewTeleNo, Process, Exist, Result, RFU ) VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, " +
                                 $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{CustID}', '', '{TeleNo}', 1, {Exist}, {Result}, '' )";
-                iitDB.ExecuteNonQuery( SQLCommand, out SQLError, ref TmpString1, ref TmpString2 );
-                iitLog.WriteLog( iLog, "SQLCommand=" + SQLCommand + ", SQLError=" + SQLError, iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG );
+                _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
             } // end of if( AddTeleNo == 1 && SQLError.Length == 0 )
 
             return JsonConvert.SerializeObject( APIResult );
         } // end of GetAccountFromTeleNoNetBank( ... )
+
         /// <summary>
-        /// int AvailableTeleNo( ... )
+        /// 
         /// </summary>
         /// <param name="TeleNo"></param>
         /// <param name="CustID"></param>
+        /// <param name="_DBContext"></param>
         /// <param name="APIResult"></param>
         /// <param name="_Log"></param>
+        /// <param name="ClientIP"></param>
         /// <returns></returns>
         public static int AvailableTeleNo( string TeleNo, string CustID, DBContext _DBContext, iitAPIResultClass APIResult, IiitLog _Log, string ClientIP )
         {
@@ -634,7 +661,7 @@ namespace WebAPITest1
                     if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
                         throw new iitException( "" );
 
-                    var result1 =   _DBContext.CommonAccount.SingleOrDefault<CommonAccount>( p => p.TeleNo == TeleNo)
+                    var result1 =   _DBContext.CommonAccount.FirstOrDefault<CommonAccount>( p => p.TeleNo == TeleNo );
 
                     SQLCommand  =   $"SELECT * FROM CommonAccount WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
                     _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
