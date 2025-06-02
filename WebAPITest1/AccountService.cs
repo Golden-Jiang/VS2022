@@ -357,6 +357,24 @@ namespace WebAPITest1
             // Insert into ChangeCustIDTeleNo
             if( AddTeleNo == 1 )
             {
+                ChangeCustIDTeleNo sp = new ChangeCustIDTeleNo
+                { 
+                    RecordControl = 1,
+                    RecordControlDateTime = TmpDateTime1,
+                    Enabled = 1,
+                    CreateTime = TmpDateTime1,
+                    CustID = CustID,
+                    OldTeleNo = "",
+                    NewTeleNo = TeleNo,
+                    Process = 1,
+                    Exist = Exist,
+                    Result = Result,
+                    RFU = "",
+                };
+
+                _DBContext.ChangeCustIDTeleNo.Add( sp );
+                _DBContext.SaveChanges();
+
                 SQLCommand =    $"INSERT INTO ChangeCustIDTeleNo ( RecordControl, RecordControlDateTime, Enabled, CreateTime, CustID, OldTeleNo, " +
                                 $"NewTeleNo, Process, Exist, Result, RFU ) VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, " +
                                 $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{CustID}', '', '{TeleNo}', 1, {Exist}, {Result}, '' )";
@@ -379,8 +397,8 @@ namespace WebAPITest1
         public static int AvailableTeleNo( string TeleNo, string CustID, DBContext _DBContext, iitAPIResultClass APIResult, IiitLog _Log, string ClientIP )
         {
             int             ReturnValue = 1; // 電話號碼不存在
-            string          SQLCommand = "", SQLError = "", TmpString1 = "";
-            int             Count = 0, ChangeCount = 0, MaxChangeCount = 1;
+            string          SQLCommand = "", TmpString1 = "";
+            int             ChangeCount = 0, MaxChangeCount = 1;
  
             try
             {
@@ -388,7 +406,7 @@ namespace WebAPITest1
                 { 
  
                     // 取得變更電話號碼最大次數
-                    var result1 =_DBContext.SystemParameter.Find( "WEBAPI", "0007" );
+                    var result1 =_DBContext.SystemParameter.FirstOrDefault( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0007" );
                     if( result1 == null ) 
                         MaxChangeCount  =   Convert.ToInt32( result1.ParameterValue );
                     SQLCommand  =   $"SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0007' ORDER BY FuncParamID, ParameterCode"; 
@@ -470,6 +488,7 @@ namespace WebAPITest1
 
             return ReturnValue;
         } // end of AvailableTeleNo( ... )
+
         /// <summary>
         /// 
         /// </summary>
@@ -488,7 +507,6 @@ namespace WebAPITest1
                                            string NewQRCode, DBContext _DBContext, iitAPIResultClass APIResult, IiitLog _Log, string ClientIP )
         {
             bool            ReturnValue = false; 
-            int             AffectedRows = 0;
             string          SQLCommand = "";
             string []       arrTable = [ "CommonAccount", "CommonForexTransaction", "CommonTWTransaction" ];
             DateTime        TmpDateTime1 = DateTime.Now;
@@ -641,10 +659,14 @@ namespace WebAPITest1
 
             return ReturnValue;
         } // end of ChangeTeleNoDB( ... )
+
         /// <summary>
-        /// // 依據電話號碼讀取外幣綁定常用帳號
+        /// 
         /// </summary>
         /// <param name="TeleNo"></param>
+        /// <param name="_DBContext"></param>
+        /// <param name="_Log"></param>
+        /// <param name="_httpContextAccessor"></param>
         /// <returns></returns>
         /// <exception cref="iitException"></exception>
         public static string GetForexAccountFromTeleNo( string TeleNo, DBContext _DBContext, IiitLog _Log, IHttpContextAccessor _httpContextAccessor  )

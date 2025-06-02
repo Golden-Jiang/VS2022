@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -33,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -57,7 +57,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "DBContext.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\DBContext.cs",
               "RelativeDocumentMoniker": "Models\\DBContext.cs",
@@ -81,15 +81,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowEcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAowEcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T08:25:38.128Z"
+              "WhenOpened": "2025-06-01T08:25:38.128Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -117,13 +118,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
               "RelativeDocumentMoniker": "AccountService.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs*",
-              "RelativeToolTip": "AccountService.cs*",
-              "ViewState": "AgIAAFABAAAAAAAAAAAAAFQBAAAWAAAAAAAAAA==",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
+              "RelativeToolTip": "AccountService.cs",
+              "ViewState": "AgIAAJgCAAAAAAAAAAAuwKQCAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T03:52:57.595Z",
               "EditorCaption": ""

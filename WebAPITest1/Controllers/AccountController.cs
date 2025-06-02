@@ -67,8 +67,8 @@ namespace WebAPITest1.Controllers
 
                             if( TmpString2.Length == 0 )
                                 ReturnValue =   AccountService.GetAccountFromTeleNo( TmpString1, _DBContext, _Log, _httpContextAccessor );
-                            //else
-                            //    ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _Log, _httpContextAccessor  );
+                            else
+                                ReturnValue = AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2, _DBContext, _Log, _httpContextAccessor );
                             break;
                         case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
