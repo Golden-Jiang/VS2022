@@ -21,6 +21,12 @@ public partial class DBContext : DbContext
 
     public virtual DbSet<CommonAccount> CommonAccount { get; set; }
 
+    public virtual DbSet<CommonForexTransaction> CommonForexTransaction { get; set; }
+
+    public virtual DbSet<CommonTWTransaction> CommonTWTransaction { get; set; }
+
+    public virtual DbSet<QRCode> QRCode { get; set; }
+
     public virtual DbSet<SystemParameter> SystemParameter { get; set; }
 
     public virtual DbSet<TaiwanBank> TaiwanBank { get; set; }
@@ -221,6 +227,219 @@ public partial class DBContext : DbContext
             entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
             entity.Property(e => e.RFU).HasMaxLength(50);
             entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+        });
+
+        modelBuilder.Entity<CommonForexTransaction>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__CommonFo__FB7607023BB27AE7");
+
+            entity.HasIndex(e => new { e.TeleNo, e.CreateTime, e.CustID }, "Index_01").IsUnique();
+
+            entity.HasIndex(e => new { e.TeleNo, e.FormOrder }, "Index_02").IsUnique();
+
+            entity.HasIndex(e => e.TeleNo, "Index_03");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.BenefAccNo)
+                .IsRequired()
+                .HasMaxLength(34)
+                .IsUnicode(false);
+            entity.Property(e => e.BenefAddr)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.BenefBankAddr)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.BenefBankCode)
+                .IsRequired()
+                .HasMaxLength(14)
+                .IsUnicode(false);
+            entity.Property(e => e.BenefBankInfo)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.BenefBankName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.BenefCountry)
+                .IsRequired()
+                .HasMaxLength(2)
+                .IsUnicode(false);
+            entity.Property(e => e.BenefName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.BenefSWCode)
+                .IsRequired()
+                .HasMaxLength(11)
+                .IsUnicode(false);
+            entity.Property(e => e.BenefTele)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.Birthday)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.CustEngName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.CustID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.CustName)
+                .IsRequired()
+                .HasMaxLength(100);
+            entity.Property(e => e.ExpireDate)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.InterMedSWCode)
+                .IsRequired()
+                .HasMaxLength(30)
+                .IsUnicode(false);
+            entity.Property(e => e.IssueDate)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
+            entity.Property(e => e.Note)
+                .IsRequired()
+                .HasMaxLength(10);
+            entity.Property(e => e.PassportCountry)
+                .IsRequired()
+                .HasMaxLength(2)
+                .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TeleNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<CommonTWTransaction>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__CommonTW__FB760702A44ADA35");
+
+            entity.HasIndex(e => new { e.TeleNo, e.CreateTime, e.RAccNo }, "Index_01").IsUnique();
+
+            entity.HasIndex(e => new { e.TeleNo, e.FormOrder }, "Index_02").IsUnique();
+
+            entity.HasIndex(e => e.TeleNo, "Index_03");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.Bank)
+                .IsRequired()
+                .HasMaxLength(3)
+                .IsUnicode(false);
+            entity.Property(e => e.Branch)
+                .IsRequired()
+                .HasMaxLength(4)
+                .IsUnicode(false);
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.InName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
+            entity.Property(e => e.Note)
+                .IsRequired()
+                .HasMaxLength(10);
+            entity.Property(e => e.PID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.PName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.PTele)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.RAccNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RName)
+                .IsRequired()
+                .HasMaxLength(50);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.TID)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.TSelf)
+                .IsRequired()
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.TeleNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+        });
+
+        modelBuilder.Entity<QRCode>(entity =>
+        {
+            entity.HasKey(e => e.RecSerialNo).HasName("PK__QRCode__FB760702CEEDA011");
+
+            entity.HasIndex(e => new { e.TeleNo, e.QRCode1 }, "Index_01").IsUnique();
+
+            entity.HasIndex(e => new { e.KeyNo, e.QRCode1 }, "Index_02").IsUnique();
+
+            entity.HasIndex(e => new { e.KeyNo, e.QRCodeStratDate }, "Index_03");
+
+            entity.HasIndex(e => e.QRCodeStratDate, "Index_04");
+
+            entity.HasIndex(e => e.IP, "Index_05");
+
+            entity.HasIndex(e => e.ServiceStatus, "Index_06");
+
+            entity.HasIndex(e => e.GetNoRecSerialNo, "Index_07");
+
+            entity.HasIndex(e => e.RecordControlDateTime, "Index_98");
+
+            entity.HasIndex(e => e.RecordControl, "Index_99");
+
+            entity.Property(e => e.CreateTime).HasColumnType("datetime");
+            entity.Property(e => e.IP)
+                .IsRequired()
+                .HasMaxLength(70)
+                .IsUnicode(false);
+            entity.Property(e => e.KeyNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
+            entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
+            entity.Property(e => e.QRCode1)
+                .IsRequired()
+                .HasMaxLength(18)
+                .IsUnicode(false)
+                .HasColumnName("QRCode1");
+            entity.Property(e => e.QRCodeEndDate)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.QRCodeStratDate)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsUnicode(false);
+            entity.Property(e => e.RFU).HasMaxLength(20);
+            entity.Property(e => e.RecordControlDateTime).HasColumnType("datetime");
+            entity.Property(e => e.ServiceStatus)
+                .IsRequired()
+                .HasMaxLength(1)
+                .IsUnicode(false);
+            entity.Property(e => e.TeleNo)
+                .IsRequired()
+                .HasMaxLength(20)
+                .IsUnicode(false);
         });
 
         modelBuilder.Entity<SystemParameter>(entity =>

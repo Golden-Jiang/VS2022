@@ -31,6 +31,18 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[CommonForexTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CommonTWTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[QRCode]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[SystemParameter]",
          "ObjectType": 0
       },
