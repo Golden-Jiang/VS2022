@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\models\\qrcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:models\\qrcode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -20,10 +24,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{21C74A21-E00C-45BA-B396-A0D95C37E093}|..\\WebAPITest3\\WebAPITest3.csproj|d:\\golden\\project\\vs2022\\webapitest3\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\QRCode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\QRCode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,43 +57,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\DBContext.cs",
-              "RelativeDocumentMoniker": "Models\\DBContext.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\DBContext.cs",
-              "RelativeToolTip": "Models\\DBContext.cs",
-              "ViewState": "AgIAACICAAAAAAAAAAApwDICAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T08:10:36.678Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "QRCode.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\QRCode.cs",
               "RelativeDocumentMoniker": "Models\\QRCode.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\QRCode.cs",
               "RelativeToolTip": "Models\\QRCode.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAwBkAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-02T08:09:10.717Z"
+              "WhenOpened": "2025-06-03T05:01:51.573Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "DBContext.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\DBContext.cs",
+              "RelativeDocumentMoniker": "Models\\DBContext.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Models\\DBContext.cs",
+              "RelativeToolTip": "Models\\DBContext.cs",
+              "ViewState": "AgIAALIBAAAAAAAAAAApwKMBAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-02T08:10:36.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAowEcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAywEYAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-01T08:25:38.128Z"
+              "WhenOpened": "2025-06-01T08:25:38.128Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -105,7 +108,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ReadMe.md",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest3\\ReadMe.md",
               "RelativeDocumentMoniker": "..\\WebAPITest3\\ReadMe.md",
@@ -123,7 +126,7 @@
               "RelativeDocumentMoniker": "AccountService.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
               "RelativeToolTip": "AccountService.cs",
-              "ViewState": "AgIAAJgCAAAAAAAAAAAuwKQCAAAfAAAAAAAAAA==",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAuwP4AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-01T03:52:57.595Z",
               "EditorCaption": ""

@@ -200,7 +200,7 @@ namespace WebAPITest1
                     var result1 =   _DBContext.WebTeleNo.FirstOrDefault( p => p.CustID == CustID && p.TeleNo == TeleNo );
  
                     SQLCommand = $"SELECT * FROM WebTeleNo WHERE CustID='{HttpUtility.HtmlDecode( CustID )}' AND TeleNo='{HttpUtility.HtmlDecode( TeleNo )}'";
-                    _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                    _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                     if( result1 != null )
                     {
@@ -245,7 +245,8 @@ namespace WebAPITest1
                                     TotalGetCallNo = 0,
                                     LastGetCallNoTime = TmpDateTime1,
                                     IP = ClientIP,
-                                    TotalForm = 0
+                                    TotalForm = 0,
+                                    CustID = CustID
                                 };
 
                                 _DBContext.WebTeleNo.Add( sp );
@@ -289,7 +290,7 @@ namespace WebAPITest1
                                     result2.TotalForm               =   0;
                                     result2.CustID                  =   CustID;
 
-                                    _DBContext.WebTeleNo.Update( result1 );
+                                    _DBContext.WebTeleNo.Update( result2 );
                                     _DBContext.SaveChanges();
 
                                     SQLCommand =    $"UPDATE WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
@@ -404,22 +405,19 @@ namespace WebAPITest1
             {
                 while( true )
                 { 
- 
                     // 取得變更電話號碼最大次數
                     var result1 =_DBContext.SystemParameter.FirstOrDefault( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0007" );
-                    if( result1 == null ) 
+                    if( result1 != null ) 
                         MaxChangeCount  =   Convert.ToInt32( result1.ParameterValue );
                     SQLCommand  =   $"SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0007' ORDER BY FuncParamID, ParameterCode"; 
-                    _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                    _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                     // 取得當日變更電話號碼次數
-                    SQLCommand  =   $"SELECT Count(*) FROM ChangeCustIDTeleNo WHERE CustID='{CustID}' AND CAST( CreateTime AS Date )=CAST( GETDATE() AS Date ) " +
+                    SQLCommand  =   $"SELECT * FROM ChangeCustIDTeleNo WHERE CustID='{CustID}' AND CAST( CreateTime AS Date )=CAST( GETDATE() AS Date ) " +
                                     $"AND Process=2 AND Result=1";
-                    var result2 =   _DBContext.ChangeCustIDTeleNo.FromSqlRaw<ChangeCustIDTeleNo>( SQLCommand );
-                    if( result2 == null )
-                        ChangeCount     =   result2.Count();
+                    ChangeCount =   _DBContext.ChangeCustIDTeleNo.FromSqlRaw<ChangeCustIDTeleNo>( SQLCommand ).Count();
 
-                    _Log.WriteLog( "SQLCommand={SQLCommand}, ChangeCount={ChangeCount}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                    _Log.WriteLog( $"SQLCommand={SQLCommand}, ChangeCount={ChangeCount}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                     if( ChangeCount >= MaxChangeCount )
                     {
@@ -429,18 +427,35 @@ namespace WebAPITest1
                     } // end of if( ChangeCount >= MaxChangeCount )
 
                     // 判斷新電話號碼是否存在
-                    var result3 = from a in _DBContext.WebTeleNo
-                                  join b in _DBContext.QRCode
-                                  on a.QRCode equals b.QRCode1
-                                  where a.TeleNo == TeleNo
-                                  select new
-                                  {
-                                    a.CustID, a.QRCode, b.QRCodeStratDate, b.QRCodeEndDate, b.ServiceStatus
-                                  };
+                    //var result3 = (from a in _DBContext.WebTeleNo
+                    //              join b in _DBContext.QRCode
+                    //              on a.QRCode equals b.QRCode
+                    //              where a.TeleNo == TeleNo
+                    //              select new
+                    //              {
+                    //                a.CustID, a.QRCode, b.QRCodeStratDate, b.QRCodeEndDate, b.ServiceStatus
+                    //              }).ToList();
+                    var result3 = (from a in _DBContext.WebTeleNo
+                                   join b in _DBContext.QRCode
+                                  on a.QRCode equals b.QRCode
+                                   where a.TeleNo == TeleNo
+                                   select new
+                                   {
+                                       a.TeleNo,
+                                       a.CustID,
+                                       a.QRCode,
+                                       b.QRCodeStratDate,
+                                       b.QRCodeEndDate,
+                                       b.ServiceStatus
+                                   }).FirstOrDefault();
 
-                    if( result3 == null )
+                    SQLCommand  =   $"SELECT a.TeleNo, a.CustID, a.QRCode, b.QRCodeStratDate, b.QRCodeEndDate, b.ServiceStatus FROM WebTeleNo a LEFT JOIN QRCode b ON b.QRCode=a.QRCode " +
+                                    $"WHERE a.TeleNo='{TeleNo}'";
+                    _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+
+                    if( result3 != null )
                     {
-                        TmpString1  =   result3.FirstOrDefault().CustID;
+                        TmpString1  =   result3.CustID;
                         if( TmpString1.Length > 0 )
                         {
                             if( CustID.CompareTo( TmpString1 ) == 0 )
@@ -457,21 +472,23 @@ namespace WebAPITest1
                         else
                         {
                             TmpString1  =   DateTime.Now.ToString( "yyyy/MM/dd" );
-                            if( TmpString1.CompareTo( result3.FirstOrDefault().QRCodeStratDate.ToString() ) >= 0 &&
-                                TmpString1.CompareTo( result3.FirstOrDefault().QRCodeEndDate.ToString() ) <= 0 && 
-                                result3.FirstOrDefault().ServiceStatus.ToString() == "0" )
+                            if( TmpString1.CompareTo( result3.QRCodeStratDate.ToString() ) >= 0 &&
+                                TmpString1.CompareTo( result3.QRCodeEndDate.ToString() ) <= 0 &&
+                                result3.ServiceStatus.ToString() == "0" )
                             {
-                                ReturnValue =   -97;    // 仍有QRCode尚未使用
+                                ReturnValue = -97;    // 仍有QRCode尚未使用
                                 iitDataTools.SetResponseResult<string>( APIResult, "9000", "此電話號碼仍有預填資料尚未使用%br%請確認使用後再綁定", "" );
                             }
                             else
-                                ReturnValue =   2;  // 電話號碼已存在並可綁定
+                                ReturnValue = 2;  // 電話號碼已存在並可綁定
                         } // end of else if( TmpString1.Length > 0 )
                     } // end of if( result3 == null )
-
-                    SQLCommand  =   $"SELECT a.CustID, a.QRCode, b.QRCodeStratDate, b.QRCodeEndDate, b.ServiceStatus FROM WebTeleNo a LEFT JOIN QRCode b ON b.QRCode=a.QRCode " +
-                                    $"WHERE a.TeleNo='{TeleNo}'";
-                    _Log.WriteLog( "SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                    else
+                    {
+                        var result4 = _DBContext.WebTeleNo.FirstOrDefault( p => p.TeleNo == TeleNo );
+                        if( result4 != null )
+                            ReturnValue = 2;  // 電話號碼已存在並可綁定
+                    } // end of  // end of if( result3 == null )
 
                     break;
                 } // end of while( true )
@@ -600,7 +617,7 @@ namespace WebAPITest1
  
                     if( OldQRCode.Length > 0 )  // 電話號碼已存在但未綁定, 需先將 NewTeleNo 對應的資料與 QRCode 對應的資料刪除
                     {
-                        _DBContext.QRCode.Where( p => p.QRCode1 == OldQRCode ).ExecuteUpdate( s =>
+                        _DBContext.QRCode.Where( p => p.QRCode == OldQRCode ).ExecuteUpdate( s =>
                                        s.SetProperty( b => b.RecordControl, b => 2 ) 
                                        .SetProperty( b => b.RecordControlDateTime, b => TmpDateTime1 )
                                        .SetProperty( b => b.LastAccessTime, b => TmpDateTime1 )
@@ -702,7 +719,7 @@ namespace WebAPITest1
                         _DBContext.CommonAccount.Update( result1 );
                         _DBContext.SaveChanges();
 
-                        SQLCommand  =   $"UPDATE CommonAccount SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}, " +
+                        SQLCommand  =   $"UPDATE CommonAccount SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
                                         $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}' WHERE TeleNo='{TeleNo}";
                         _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
                     } // end of if( SQLError == string.Empty && RecordCount > 0 )

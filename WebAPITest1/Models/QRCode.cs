@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebAPITest1.Models;
 
-public partial class QRCode
+public partial class QRCodes
 {
     public int RecordControl { get; set; }
 
@@ -23,7 +23,7 @@ public partial class QRCode
 
     public string KeyNo { get; set; }
 
-    public string QRCode1 { get; set; }
+    public string QRCode { get; set; }
 
     public string QRCodeStratDate { get; set; }
 
