@@ -13,6 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPITest4", "..\WebAPITes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIWithOpenAPI", "..\WebAPIWithOpenAPI\WebAPIWithOpenAPI.csproj", "{7CE74B7C-CF8B-4975-AFB3-E2500CB4F6AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPITest5", "..\WebAPITest5\WebAPITest5.csproj", "{E689DDB8-2010-4160-A658-B25F38DCCD93}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項目", "{E5D99412-E286-4391-86E8-DC1AE383B937}"
+	ProjectSection(SolutionItems) = preProject
+		ServiceRegistration.cs = ServiceRegistration.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +46,10 @@ Global
 		{7CE74B7C-CF8B-4975-AFB3-E2500CB4F6AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CE74B7C-CF8B-4975-AFB3-E2500CB4F6AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CE74B7C-CF8B-4975-AFB3-E2500CB4F6AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E689DDB8-2010-4160-A658-B25F38DCCD93}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E689DDB8-2010-4160-A658-B25F38DCCD93}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E689DDB8-2010-4160-A658-B25F38DCCD93}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E689DDB8-2010-4160-A658-B25F38DCCD93}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

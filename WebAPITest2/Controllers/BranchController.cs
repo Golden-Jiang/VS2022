@@ -35,8 +35,7 @@ namespace WebAPITest2.Controllers
     public class BranchController : ControllerBase
     {
        private readonly DBContext _DBContext;
-
-       public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
+        public BranchController(IHttpContextAccessor httpContextAccessor, DBContext dBContext)
        {
             ILog iLog =   new ILog();
             //
