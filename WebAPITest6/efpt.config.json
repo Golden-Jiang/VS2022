@@ -1,0 +1,113 @@
+﻿{
+   "CodeGenerationMode": 4,
+   "ContextClassName": "DBContext",
+   "ContextNamespace": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "WebAPITest6",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 2,
+   "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
+   "Tables": [
+      {
+         "Name": "[dbo].[Bank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Branch]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BranchComputer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BranchDeviceStatus]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[BranchGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ChangeCustIDTeleNo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CommonAccount]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CommonForexTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[CommonTWTransaction]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[QRCode]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[SystemParameter]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanBank]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanBankBranch]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanCity]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[TaiwanZone]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WebTeleNo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[WorkingDay]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": null,
+   "UncountableWords": null,
+   "UseAsyncStoredProcedureCalls": true,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDatabaseNamesForRoutines": true,
+   "UseDateOnlyTimeOnly": true,
+   "UseDbContextSplitting": false,
+   "UseDecimalDataAnnotationForSprocResult": true,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseInternalAccessModifiersForSprocsAndFunctions": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UsePrefixNavigationNaming": false,
+   "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
+   "UseSpatial": false,
+   "UseT4": false,
+   "UseT4Split": false
+}

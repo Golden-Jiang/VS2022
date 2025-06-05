@@ -20,7 +20,7 @@ namespace WebAPI_Test_5
             // 使用封裝好的服務註冊類別
             ServiceRegistration.AddAllServices( builder.Services, configuration );
 
-            // iitSDKWeb �t�αҰ�
+            // iitSDKWeb 
             iitSystemTools.SystemStart( configuration );
            
             builder.Services.AddControllersWithViews();
