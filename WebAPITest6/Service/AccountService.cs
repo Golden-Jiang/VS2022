@@ -117,15 +117,16 @@ namespace WebAPITest6
                         //                $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', IP='{_ClientIP}' WHERE TeleNo='{TeleNo}'"; 
                         //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
 
-                        var result2 =   _DBContext.SystemParameter.FirstOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
+                        var result2 = _repository.Select<SystemParameter>( "SystemParameter", "FuncParamID = @0 && ParameterCode = @1", "WEBAPI", "0002" );
+                        //var result2 =   _DBContext.SystemParameter.FirstOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
 
                         if( result2 != null )
                             CustomerClass.TeleAccount.MaxForm   =   result2.ParameterValue;
                         else
                             CustomerClass.TeleAccount.MaxForm    =   "10";
 
-                        SQLCommand  =   "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode"; 
-                        _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
+                        //SQLCommand  =   "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode"; 
+                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
                     } // end of if( SQLError == string.Empty && RecordCount > 0 )
                     else
                     { 

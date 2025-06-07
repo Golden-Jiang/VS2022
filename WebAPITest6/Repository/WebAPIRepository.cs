@@ -70,6 +70,32 @@ namespace WebAPITest6
             return default(T);
         } // end of public WebTeleNo GetUseTeleNo ... )
 
+        public T Select<T>( string TableName, string con1, string para1, string para2 )
+        {
+            string  SQLCommand;
+            try
+            { 
+                var dbSetProperty   =   typeof( DBContext ).GetProperty( TableName, BindingFlags.Public | BindingFlags.Instance );
+                if( dbSetProperty != null )
+                {
+                    var dbSet   =   dbSetProperty.GetValue( _DBContext ) as IQueryable<T>;
+                    var results =   dbSet.Where<T>( $"{con1}", para1, para2 );
+
+                    SQLCommand = $"SELECT FROM {TableName} condition={con1}-{para1}-{para2}";
+                    _Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
+
+                    return results.FirstOrDefault();
+                } // end of if( dbSetProperty != null )
+            } // end of try
+            catch( Exception except )
+            {
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+            } // end of catch
+
+            return default(T);
+        } // end of public WebTeleNo GetUseTeleNo ... )
+
         public void Insert<T>( string TableName, T objData ) where T : class
         {
             string  SQLCommand;
