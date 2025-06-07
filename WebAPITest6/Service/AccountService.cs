@@ -19,6 +19,7 @@ using iitDataWeb;
 using iitLogWeb;
 using iitMSGWeb;
 using iitToolsWeb;
+using WebAPITest6.Repository;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -26,20 +27,25 @@ namespace WebAPITest6
 {
     public class AccountService : IAccountService
     {
-        public readonly IHttpContextAccessor    _httpContextAccessor;
-        public readonly IWebAPIRepository       _webAPIRepository;   
-        public readonly DBContext               _DBContext;
-        public readonly IiitLog                 _Log;
+        private readonly WebAPIRepository       _repository;
+        //private readonly IRepository<WebTeleNo> _repository;
+        private readonly IHttpContextAccessor   _httpContextAccessor;
+        private readonly DBContext              _DBContext;
+        private readonly IiitLog                _Log;
         private readonly string                 _ClientIP;
 
-        public AccountService( IHttpContextAccessor httpContextAccessor, IWebAPIRepository webAPIRepository, DBContext dBContext, IiitLog Log )
+        public AccountService( 
+            IHttpContextAccessor httpContextAccessor,  
+            WebAPIRepository repository, 
+            DBContext dBContext, 
+            IiitLog Log )
         {
             _httpContextAccessor    =   httpContextAccessor;
-            _webAPIRepository       =   webAPIRepository;
+            _repository             =   repository;
             _DBContext              =   dBContext;
             _Log                    =   Log;
-            //_ClientIP               =   httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
             _ClientIP               =   iitSystemTools.SetClientIP( httpContextAccessor );
+            //_ClientIP               =   httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString();
             //Utility.SetClientEnvironment(httpContextAccessor, ref _httpContextAccessor, dBContext, ref _DBContext, _Log );
         }
 
@@ -56,20 +62,20 @@ namespace WebAPITest6
                 { 
                     if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
                         throw new iitException( "" );
- 
+
                     //var result1 =   from a in _DBContext.WebTeleNo
                     //                where a.TeleNo == TeleNo
                     //                select a;
-                                    //{ 
-                                    //    a.TeleNo,  
-                                    //    a.RecordControl,
-                                    //    a.RecordControlDateTime,
-                                    //    a.LastAccessTime,
-                                    //    a.Ip,
-                                    //    a.AccountNo, 
-                                    //    a.TotalGetCallNo, 
-                                    //    a.TotalForm 
-                                    //}).FirstOrDefault();
+                    //{ 
+                    //    a.TeleNo,  
+                    //    a.RecordControl,
+                    //    a.RecordControlDateTime,
+                    //    a.LastAccessTime,
+                    //    a.Ip,
+                    //    a.AccountNo, 
+                    //    a.TotalGetCallNo, 
+                    //    a.TotalForm 
+                    //}).FirstOrDefault();
                     //var result1 = _DBContext.WebTeleNo.FirstOrDefault<WebTeleNo>( p => p.TeleNo == TeleNo );  
 
                     //SQLCommand  =   $"SELECT * FROM WebTeleNo WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
@@ -78,11 +84,12 @@ namespace WebAPITest6
                     //var result11 = result1.ToList();
                     //if( result11.Count != 0 )
                     //{
-                        //CustomerClass.TeleAccount.AccountNo = result11 [ 0 ].AccountNo;
+                    //CustomerClass.TeleAccount.AccountNo = result11 [ 0 ].AccountNo;
                     //    CustomerClass.TeleAccount.AccountNo = result11 [ 0 ].AccountNo;
                     //    CustomerClass.TeleAccount.TotalGetCallNo = result11 [ 0 ].TotalGetCallNo.ToString();
                     //    CustomerClass.TeleAccount.TotalForm = result11 [ 0 ].TotalForm.ToString();
-                    WebTeleNo result1 = _webAPIRepository.GetUsePara1<WebTeleNo>( "WebTeleNo", "TeleNo=@0", TeleNo );
+                    //_webTeleNoRepository.TryGetValue( "WebTeleNo", out IRepository<WebTeleNo> repository );
+                    var result1 = _repository.Select<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo );
                     if( result1 != null )
                     {
                         CustomerClass.TeleAccount.TeleNo            =   result1.TeleNo;
@@ -102,7 +109,7 @@ namespace WebAPITest6
                         result1.LastAccessTime = TmpDateTime1;
                         result1.IP = _ClientIP;
 
-                        _webAPIRepository.Update<WebTeleNo>( "WebTeleNo", "TeleNo=@0", TeleNo, result1 );
+                        _repository.Update<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo, result1 );
                         //_DBContext.WebTeleNo.Update( result1 );
                         //_DBContext.SaveChanges();
 
@@ -137,7 +144,7 @@ namespace WebAPITest6
                             TotalForm = 0
                         };
 
-                        _webAPIRepository.Insert<WebTeleNo>( "WebTeleNo", sp );
+                        _repository.Insert<WebTeleNo>( "WebTeleNo", sp );
                         //_DBContext.WebTeleNo.Add( sp );
                         //_DBContext.SaveChanges();
 

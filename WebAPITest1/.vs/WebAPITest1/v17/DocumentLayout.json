@@ -3,47 +3,22 @@
   "WorkspaceRootPath": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\interface\\iwebapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\systemparameterrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\98a660407d65694fbcfdbd9d086423dd05fda523fc73bee4aba46c23ac35ded6\\iitSystemTools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\webapitest6.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E689DDB8-2010-4160-A658-B25F38DCCD93}|..\\WebAPITest5\\WebAPITest5.csproj|d:\\golden\\project\\vs2022\\webapitest5\\controllers\\branchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\models\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\interface\\ibranch.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\utility\\utility.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webtelenorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,7 +28,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -77,78 +52,65 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BranchController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest5\\Controllers\\BranchController.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest5\\Controllers\\BranchController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest5\\Controllers\\BranchController.cs",
-              "RelativeToolTip": "..\\WebAPITest5\\Controllers\\BranchController.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "SystemParameterRepository.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\SystemParameterRepository.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\SystemParameterRepository.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\SystemParameterRepository.cs",
+              "RelativeToolTip": "..\\WebAPITest6\\Repository\\SystemParameterRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T12:02:54.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAMwBYAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T09:39:54.82Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Utility.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Utility\\Utility.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Utility\\Utility.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Utility\\Utility.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Utility\\Utility.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAowC8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T04:07:03.819Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WebAPIRepository.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAADwv2EAAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T03:33:52.932Z",
+              "WhenOpened": "2025-06-07T08:09:49.626Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "WebAPIRepository.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "RelativeToolTip": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAIAwwC4AAABIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-07T01:22:28.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Service\\AccountService.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Service\\AccountService.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Service\\AccountService.cs",
               "RelativeToolTip": "..\\WebAPITest6\\Service\\AccountService.cs",
-              "ViewState": "AgIAAH0AAAAAAAAAAAAMwIkAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAcwLEAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T03:07:30.939Z",
+              "WhenOpened": "2025-06-06T10:37:32.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "WebTeleNoRepository.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
+              "RelativeToolTip": "..\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-06T09:51:27.486Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\ServiceRegistration.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\ServiceRegistration.cs",
               "RelativeToolTip": "..\\WebAPITest6\\ServiceRegistration.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAABcAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAkwBwAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T03:45:16.662Z",
               "EditorCaption": ""
@@ -161,98 +123,9 @@
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IWebAPIRepository.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IWebAPIRepository.cs",
               "RelativeToolTip": "..\\WebAPITest6\\Interface\\IWebAPIRepository.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABcAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAB4AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-05T03:31:01.866Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "iitSystemTools.cs",
-              "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\98a660407d65694fbcfdbd9d086423dd05fda523fc73bee4aba46c23ac35ded6\\iitSystemTools.cs",
-              "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\.vsdbgsrc\\98a660407d65694fbcfdbd9d086423dd05fda523fc73bee4aba46c23ac35ded6\\iitSystemTools.cs [\u552F\u8B80]",
-              "ViewState": "AgIAABUAAAAAAAAAAIAywCoAAAACAAAAAQAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T12:23:02.259Z",
-              "EditorCaption": " [\u552F\u8B80]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Properties\\launchSettings.json",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Properties\\launchSettings.json",
-              "RelativeToolTip": "..\\WebAPITest6\\Properties\\launchSettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-06-05T09:31:43.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "WebAPITest6",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\WebAPITest6.csproj",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\WebAPITest6.csproj",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\WebAPITest6.csproj",
-              "RelativeToolTip": "..\\WebAPITest6\\WebAPITest6.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-06-05T12:04:55.508Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Program.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Program.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Program.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Program.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAowB8AAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T12:21:11.094Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IAccountService.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Interface\\IAccountService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T03:28:12.575Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DBContext.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Models\\DBContext.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Models\\DBContext.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Models\\DBContext.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Models\\DBContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T09:52:36.355Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IBranch.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IBranch.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IBranch.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IBranch.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Interface\\IBranch.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-05T08:02:22.217Z",
               "EditorCaption": ""
             }
           ]

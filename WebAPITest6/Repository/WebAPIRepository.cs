@@ -23,12 +23,13 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Reflection;
 using Microsoft.Data.SqlClient;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Newtonsoft.Json;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
 namespace WebAPITest6 
 {
-    public class WebAPIRepository : IWebAPIRepository
+    public class WebAPIRepository 
     {
         public readonly IHttpContextAccessor    _httpContextAccessor;
         public readonly DBContext               _DBContext;
@@ -43,7 +44,7 @@ namespace WebAPITest6
             _ClientIP               =   iitSystemTools.SetClientIP( httpContextAccessor );
         } // end of public WebAPIRepository
 
-        public T GetUsePara1<T>( string TableName, string con1, string para1 )
+        public T Select<T>( string TableName, string con1, string para1 )
         {
             string  SQLCommand;
             try
@@ -59,19 +60,6 @@ namespace WebAPITest6
 
                     return results.FirstOrDefault();
                 } // end of if( dbSetProperty != null )
-
-                //var entityType = typeof( T ); 
-                //var setMethod = typeof( DBContext ).GetMethod( "Set" ).MakeGenericMethod( entityType );
-                //var dbSet = setMethod.Invoke( _DBContext, null );
-
-                //// 查詢資料
-                //var results = ( ( IQueryable<T> )dbSet ).Where<T>( $"{con1}", para1 ); 
-                ////var result = _DBContext.WebTeleNo.Where<WebTeleNo>( "TeleNo = @0", TeleNo ); 
-
-                //SQLCommand  =   $"SELECT FROM {TableName} condition={con1}{para1}";
-                //_Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
-
-                //return results.FirstOrDefault();
             } // end of try
             catch( Exception except )
             {
@@ -82,27 +70,19 @@ namespace WebAPITest6
             return default(T);
         } // end of public WebTeleNo GetUseTeleNo ... )
 
-        public void Insert<T>( string TableName, T objData )
+        public void Insert<T>( string TableName, T objData ) where T : class
         {
             string  SQLCommand;
 
             try
             {
-                var dbSetProperty   =   typeof( DBContext ).GetProperty( TableName, BindingFlags.Public | BindingFlags.Instance );
-                if( dbSetProperty != null )
-                {
-                    var dbSet   =   dbSetProperty.GetValue( _DBContext );
+                _DBContext.Set<T>().Add( objData );
+                _DBContext.SaveChanges(); // 儲存變更
 
-                    //dbSet.Add( objData );
-                    //( ( IList<T> )dbSet ).Add( objData );
-                    ((IList<T>)dbSet).Add( objData );
-                    //((IList<T>)dbSet).Add( objData );
+                SQLCommand = $"INSERT {TableName} objData={JsonConvert.SerializeObject(objData)}";
+                _Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
 
-                    SQLCommand = $"INSERT {TableName} objData={objData}";
-                    _Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
-
-                    _DBContext.SaveChanges();
-                } // end of if( dbSetProperty != null )
+                _DBContext.SaveChanges();
             } // end of try
             catch( Exception except )
             {
@@ -135,7 +115,7 @@ namespace WebAPITest6
                             }
                         } // end of foreach( var prop in objData.GetType().GetProperties() )
 
-                        SQLCommand = $"UPDATE {TableName} objData={objData}";
+                        SQLCommand = $"UPDATE {TableName} objData={JsonConvert.SerializeObject(objData)}";
                         _Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
 
                         _DBContext.SaveChanges();

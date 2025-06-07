@@ -10,6 +10,7 @@
 //---------------------------------------------------------------------------------------------------
 // declare package
 //---------------------------------------------------------------------------------------------------
+using iitDataWeb;
 using iitLogWeb;
 using System.Linq.Dynamic.Core;
 using WebAPITest6.Models;
@@ -18,12 +19,29 @@ using WebAPITest6.Models;
 //---------------------------------------------------------------------------------------------------
 namespace WebAPITest6 
 {
-    public interface IWebAPIRepository
+    public interface INameable
     {
-        T GetUsePara1<T>( string TableName, string con1, string para1 );
-        void Insert<T>( string TableName, T objData );
-        void Update<T>( string TableName, string KeyCondition, string Key, T objData );
-    } // end of public interface IWebAPIRepository
+        string Name { get; }
+    }
+
+    public interface IRepository<T> : INameable
+    {
+        T Select( string KeyValue ){ return default(T); }
+        T Select( string KeyValue1, string KeyValue2 ){ return default(T); }
+        T Select( string KeyValue1, string KeyValue2, string KeyValue3 ){ return default(T); }
+        void Insert( T objData ){;}
+        void Update( T objData ){;}
+        void Delete( string KeyValue ){;}
+    } // end of public interface IRepository<T> : INameable
+
+    public interface IWebAPIRepository<T> : INameable
+    {
+        T Select( string TableName, string con1, string para1 ){ return default(T); }
+        T Select( string KeyValue1, string KeyValue2 ){ return default(T); }
+        void Insert( string TableName, T objData ){;}
+        void Update( string TableName, string KeyCondition, string Key, T objData ){;}
+        void Delete( string KeyValue ){;}
+    } // end of public interface IRepository<T> : INameable
 } // end of namespace WebAPITest6
 //===================================================================================================
 // end of IWebAPIRepository.cs

@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 
 using WebAPITest6.Models;
 using iitLogWeb;
+using WebAPITest6.Repository;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -24,7 +25,15 @@ namespace WebAPITest6
         public static void AddApplicationServices( this IServiceCollection services )
         {
             // 註冊應用程序服務
-            services.AddScoped<IWebAPIRepository, WebAPIRepository>();
+            services.AddTransient<IRepository<WebTeleNo>, WebTeleNoRepository>();
+            services.AddTransient<WebAPIRepository>();
+
+            //services.AddScoped<IReadOnlyDictionary<string, IRepository<T>>>( provider =>
+            //{
+            //    var allRepository = provider.GetService<IEnumerable<IRepository<T>>>();
+            //    return allRepository.ToDictionary( p => p.Name, p => p );
+            //});
+
             services.AddScoped<IAccountService, AccountService>();
 
             services.AddScoped<IiitLog, iitLog>();
