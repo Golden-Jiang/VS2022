@@ -3,10 +3,10 @@
   "WorkspaceRootPath": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\interface\\iwebapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -28,28 +28,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 3,
@@ -65,26 +45,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "WebAPIRepository.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs*",
-              "RelativeToolTip": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs*",
-              "ViewState": "AgIAAEIAAAAAAAAAAAAcwE4AAAArAAAAAAAAAA==",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "RelativeToolTip": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAiwE0AAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-07T01:22:28.484Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AccountService.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Service\\AccountService.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Service\\AccountService.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Service\\AccountService.cs",
               "RelativeToolTip": "..\\WebAPITest6\\Service\\AccountService.cs",
-              "ViewState": "AgIAAF0AAAAAAAAAAAAcwHcAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAHUAAAAAAAAAAIAywIEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T10:37:32.969Z",
               "EditorCaption": ""

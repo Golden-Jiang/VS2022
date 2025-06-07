@@ -78,17 +78,6 @@ namespace WebAPITest6
                     //}).FirstOrDefault();
                     //var result1 = _DBContext.WebTeleNo.FirstOrDefault<WebTeleNo>( p => p.TeleNo == TeleNo );  
 
-                    //SQLCommand  =   $"SELECT * FROM WebTeleNo WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
-                    //_Log.WriteLog( $"{SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
-
-                    //var result11 = result1.ToList();
-                    //if( result11.Count != 0 )
-                    //{
-                    //CustomerClass.TeleAccount.AccountNo = result11 [ 0 ].AccountNo;
-                    //    CustomerClass.TeleAccount.AccountNo = result11 [ 0 ].AccountNo;
-                    //    CustomerClass.TeleAccount.TotalGetCallNo = result11 [ 0 ].TotalGetCallNo.ToString();
-                    //    CustomerClass.TeleAccount.TotalForm = result11 [ 0 ].TotalForm.ToString();
-                    //_webTeleNoRepository.TryGetValue( "WebTeleNo", out IRepository<WebTeleNo> repository );
                     var result1 = _repository.Select<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo );
                     if( result1 != null )
                     {
@@ -97,36 +86,19 @@ namespace WebAPITest6
                         CustomerClass.TeleAccount.TotalGetCallNo    =   result1.TotalGetCallNo.ToString();
                         CustomerClass.TeleAccount.TotalForm         =   result1.TotalForm.ToString();
 
-                        //foreach( var std in result1 )
-                        //{
-                        //    std.RecordControl       =   2;
-                        //    std.RecordControlDateTime   =   TmpDateTime1;
-                        //    std.LastAccessTime          =   TmpDateTime1;
-                        //    std.IP                      =   _ClientIP;
-                        //} // end of foreach( var std in result1 )
                         result1.RecordControl = 2;
                         result1.RecordControlDateTime = TmpDateTime1;
                         result1.LastAccessTime = TmpDateTime1;
                         result1.IP = _ClientIP;
 
                         _repository.Update<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo, result1 );
-                        //_DBContext.WebTeleNo.Update( result1 );
-                        //_DBContext.SaveChanges();
-
-                        //SQLCommand  =   $"Update WebTeleNo SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
-                        //                $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', IP='{_ClientIP}' WHERE TeleNo='{TeleNo}'"; 
-                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
 
                         var result2 = _repository.Select<SystemParameter>( "SystemParameter", "FuncParamID = @0 && ParameterCode = @1", "WEBAPI", "0002" );
-                        //var result2 =   _DBContext.SystemParameter.FirstOrDefault<SystemParameter>( p => p.FuncParamID == "WEBAPI" && p.ParameterCode == "0002" );  
 
                         if( result2 != null )
                             CustomerClass.TeleAccount.MaxForm   =   result2.ParameterValue;
                         else
                             CustomerClass.TeleAccount.MaxForm    =   "10";
-
-                        //SQLCommand  =   "SELECT * FROM SystemParameter WHERE FuncParamID='WEBAPI' AND ParameterCode='0002' ORDER BY FuncParamID, ParameterCode"; 
-                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
                     } // end of if( SQLError == string.Empty && RecordCount > 0 )
                     else
                     { 
@@ -146,21 +118,12 @@ namespace WebAPITest6
                         };
 
                         _repository.Insert<WebTeleNo>( "WebTeleNo", sp );
-                        //_DBContext.WebTeleNo.Add( sp );
-                        //_DBContext.SaveChanges();
-
-                        //SQLCommand  =   $"INSERT INTO WebTeleNo ( RecordControl, RecordControlDateTime, Enabled, CreateTime, LastAccessTime, TeleNo, AccountNo, " + 
-                        //                $" TotalGetCallNo, LastGetCallNoTime, IP, TotalForm ) VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, " +
-                        //                $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{TeleNo}', '', 0, " +
-                        //                $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{_ClientIP}', 0 )"; 
-                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
  
                         CustomerClass.TeleAccount.AccountNo         =   "";
                         CustomerClass.TeleAccount.TotalGetCallNo    =   "";
                         CustomerClass.TeleAccount.TotalForm         =   "";
                     } // end of else if( SQLError == string.Empty && RecordCount > 0 )
 
-                    //iitDataTools.SetResponseResult<string>( APIResult, "0000", "XX", "" );
                     iitDataTools.SetResponseResult<AccountData.Customer>( APIResult, "0000", iitMSG.HTTPMSG[ iitMSG.CODE.HTTP.SUCCESS ], CustomerClass );
  
                     break;
