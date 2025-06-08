@@ -29,18 +29,18 @@ namespace WebAPITest6
     {
         private readonly WebAPIRepository       _repository;
         //private readonly IRepository<WebTeleNo> _repository;
-        private readonly IHttpContextAccessor   _httpContextAccessor;
+        //private readonly IHttpContextAccessor   _httpContextAccessor;
         private readonly DBContext              _DBContext;
         private readonly IiitLog                _Log;
         private readonly string                 _ClientIP;
 
-        public AccountService( 
+        public AccountService(
             IHttpContextAccessor httpContextAccessor,  
             WebAPIRepository repository, 
             DBContext dBContext, 
             IiitLog Log )
         {
-            _httpContextAccessor    =   httpContextAccessor;
+            //_httpContextAccessor    =   httpContextAccessor;
             _repository             =   repository;
             _DBContext              =   dBContext;
             _Log                    =   Log;
@@ -51,7 +51,6 @@ namespace WebAPITest6
 
         public string GetAccountFromTeleNo( string TeleNo )
         {
-            string                  SQLCommand = "";
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
@@ -59,8 +58,8 @@ namespace WebAPITest6
             try
             {
                 while( true )
-                { 
-                    if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
+                {
+                    if( !iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
                         throw new iitException( "" );
 
                     //var result1 =   from a in _DBContext.WebTeleNo
@@ -141,6 +140,92 @@ namespace WebAPITest6
 
             return JsonConvert.SerializeObject( APIResult );
         } // end of GetAccountFromTeleNo( ... )
+
+        public string GetForexAccountFromTeleNo( string TeleNo )
+        {
+            //string                  SQLCommand = "";
+            DateTime                TmpDateTime1 = DateTime.Now;
+            iitAPIResultClass       APIResult = new iitAPIResultClass();
+            AccountData.Customer    CustomerClass = new AccountData.Customer();
+
+            try
+            {
+                while( true )
+                { 
+                    if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
+                        throw new iitException( "" );
+
+                    //var result1 =   _DBContext.CommonAccount.FirstOrDefault<CommonAccount>( p => p.TeleNo == TeleNo );
+                    var result1 =   _repository.Select<CommonAccount>( "CommonAccount", "TeleNo = @0", TeleNo );
+
+                    //SQLCommand  =   $"SELECT * FROM CommonAccount WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
+                    //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+//
+                    if( result1 != null )
+                    {
+                        CustomerClass.TeleAccount.TeleNo            =   result1.TeleNo;
+                        CustomerClass.TeleAccount.AccountNo         =   result1.AccountNo;
+                        CustomerClass.TeleAccount.TotalGetCallNo    =   "";
+                        CustomerClass.TeleAccount.TotalForm         =   "";
+
+                        result1.RecordControl           =   2;
+                        result1.RecordControlDateTime   =   TmpDateTime1;
+                        result1.LastAccessTime          =   TmpDateTime1;
+
+                        _repository.Update<CommonAccount>( "CommonAccount", "TeleNo = @0", TeleNo, result1 );
+
+                        //_DBContext.CommonAccount.Update( result1 );
+                        //_DBContext.SaveChanges();
+
+                        //SQLCommand  =   $"UPDATE CommonAccount SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
+                        //                $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}' WHERE TeleNo='{TeleNo}";
+                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+                    } // end of if( SQLError == string.Empty && RecordCount > 0 )
+                    else
+                    { 
+                        CommonAccount sp = new CommonAccount
+                        { 
+                            RecordControl = 1,
+                            RecordControlDateTime = TmpDateTime1,
+                            Enabled = 1,
+                            CreateTime = TmpDateTime1,
+                            LastAccessTime = TmpDateTime1,
+                            TeleNo = TeleNo,
+                            AccountType = "F",
+                            AccountNo = "",
+                        };
+
+                        _repository.Insert<CommonAccount>( "CommonAccount", sp );
+                        //_DBContext.CommonAccount.Add( sp );
+                        //_DBContext.SaveChanges();
+
+                        //SQLCommand  =   $"INSERT INTO CommonAccount ( RecordControl, RecordControlDateTime, Enabled, CreateTime, LastAccessTime, TeleNo, AccountType, AccountNo, RFU ) " + 
+                        //                $"VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}, " + 
+                        //                $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{TeleNo}', 'F', '', '' )"; 
+                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
+
+                        CustomerClass.TeleAccount.AccountNo         =   "";
+                        CustomerClass.TeleAccount.TotalGetCallNo    =   "";
+                        CustomerClass.TeleAccount.TotalForm         =   "";
+                    } // end of else if( SQLError == string.Empty && RecordCount > 0 )
+
+                    iitDataTools.SetResponseResult<AccountData.Customer>( APIResult, "0000", iitMSG.HTTPMSG[ iitMSG.CODE.HTTP.SUCCESS ], CustomerClass );
+
+                    break;
+                } // end of while( true )
+            } // end of try
+            catch( Exception except )
+            {
+                if( except.GetType() != typeof( iitException ) )
+                {
+                    _Log.except =   except;
+                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                    iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
+                } // end of if( except.GetType() != typeof( iitException ) )
+            } // end of catch
+
+            return JsonConvert.SerializeObject( APIResult );
+        } // end of GetForexAccountFromTeleNo( ... )
     } // end of public class AccountService : IAccountService
 } // end of namespace WebAPITest6
 //===================================================================================================

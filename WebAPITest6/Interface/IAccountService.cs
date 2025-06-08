@@ -20,6 +20,7 @@ namespace WebAPITest6
     public interface IAccountService
     {
         public string GetAccountFromTeleNo( string TeleNo );
+        public string GetForexAccountFromTeleNo( string TeleNo );
     } // end of public interface IAccountService
 } // end of namespace WebAPITest6
 //===================================================================================================

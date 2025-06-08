@@ -30,7 +30,7 @@ namespace WebAPITest6.Controllers
     {
         private readonly IAccountService _AccountService;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly DBContext _DBContext;
+        //private readonly DBContext _DBContext;
         private readonly IiitLog _Log;
         private readonly string _ClientIP;
 
@@ -38,7 +38,6 @@ namespace WebAPITest6.Controllers
         {
             _AccountService         =   AccountService;
             _httpContextAccessor    =   httpContextAccessor;
-            _DBContext              =   dBContext;
             _Log                    =   Log; 
             _ClientIP               =   iitSystemTools.SetClientIP( httpContextAccessor );
 
@@ -78,8 +77,8 @@ namespace WebAPITest6.Controllers
                         case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
                                 break;
-                            
-                            //ReturnValue     =   _AccountService.GetForexAccountFromTeleNo( TmpString1, _DBContext, _Log, _ClientIP  );
+
+                            ReturnValue = _AccountService.GetForexAccountFromTeleNo( TmpString1 );
                             break;
                         //                        case    "SA013101"      :   // 變更綁定電話號碼
                         //                            if( ( ReturnValue = Utility.CheckGetParameter( ControllerContext, APIResult, "ND", ref TmpString1 ) ) != "" )
@@ -167,7 +166,7 @@ namespace WebAPITest6.Controllers
                             iitDataTools.SetResponseResult<string>( APIResult, "1000", $"{iitMSG.APIError.E1000} {TxCode}", "" );
                             ReturnValue =   JsonConvert.SerializeObject( APIResult );
 
-                            _Log.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
+                            _Log.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
                             break;
                     } // end of switch( TxCode )
  
@@ -177,7 +176,7 @@ namespace WebAPITest6.Controllers
             catch( Exception except )
             {
                 _Log.except  =   except;
-                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _httpContextAccessor.HttpContext.Items[ "ClientIP" ].ToString() );
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
 
                 iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
                 ReturnValue =   JsonConvert.SerializeObject( APIResult );
