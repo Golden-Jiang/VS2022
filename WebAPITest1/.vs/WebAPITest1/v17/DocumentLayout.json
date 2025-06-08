@@ -12,10 +12,6 @@
       "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|d:\\golden\\project\\vs2022\\webapitest1\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{11E5EDCD-A7CE-4B54-BFD5-A58CB03E8BE7}|WebAPITest1.csproj|solutionrelative:accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}|..\\WebAPITest6\\WebAPITest6.csproj|d:\\golden\\project\\vs2022\\webapitest6\\repository\\webapirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -35,21 +31,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "SelectedChildIndex": 8,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
-              "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IAccountService.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
-              "RelativeToolTip": "..\\WebAPITest6\\Interface\\IAccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T07:24:54.208Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -72,15 +55,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
-              "RelativeDocumentMoniker": "AccountService.cs",
-              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest1\\AccountService.cs",
-              "RelativeToolTip": "AccountService.cs",
-              "ViewState": "AgIAAOsCAAAAAAAAAAAcwAEDAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
+              "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IAccountService.cs",
+              "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IAccountService.cs",
+              "RelativeToolTip": "..\\WebAPITest6\\Interface\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-08T07:00:30.421Z",
+              "WhenOpened": "2025-06-08T07:24:54.208Z",
               "EditorCaption": ""
             },
             {
@@ -91,14 +74,14 @@
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Controllers\\AccountController.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Controllers\\AccountController.cs",
               "RelativeToolTip": "..\\WebAPITest6\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAE4AAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAowE4AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T07:00:30.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "WebAPIRepository.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebAPIRepository.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebAPIRepository.cs",
@@ -116,14 +99,14 @@
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Service\\AccountService.cs",
               "ToolTip": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Service\\AccountService.cs",
               "RelativeToolTip": "..\\WebAPITest6\\Service\\AccountService.cs",
-              "ViewState": "AgIAAGcAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAYwL4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-06T10:37:32.969Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "WebTeleNoRepository.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Repository\\WebTeleNoRepository.cs",
@@ -135,7 +118,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\ServiceRegistration.cs",
@@ -147,7 +130,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "IWebAPIRepository.cs",
               "DocumentMoniker": "D:\\Golden\\Project\\VS2022\\WebAPITest6\\Interface\\IWebAPIRepository.cs",
               "RelativeDocumentMoniker": "..\\WebAPITest6\\Interface\\IWebAPIRepository.cs",

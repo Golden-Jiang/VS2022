@@ -143,7 +143,6 @@ namespace WebAPITest6
 
         public string GetForexAccountFromTeleNo( string TeleNo )
         {
-            //string                  SQLCommand = "";
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
@@ -155,12 +154,8 @@ namespace WebAPITest6
                     if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
                         throw new iitException( "" );
 
-                    //var result1 =   _DBContext.CommonAccount.FirstOrDefault<CommonAccount>( p => p.TeleNo == TeleNo );
                     var result1 =   _repository.Select<CommonAccount>( "CommonAccount", "TeleNo = @0", TeleNo );
 
-                    //SQLCommand  =   $"SELECT * FROM CommonAccount WHERE TeleNo='{TeleNo}' ORDER BY TeleNo";
-                    //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
-//
                     if( result1 != null )
                     {
                         CustomerClass.TeleAccount.TeleNo            =   result1.TeleNo;
@@ -173,14 +168,7 @@ namespace WebAPITest6
                         result1.LastAccessTime          =   TmpDateTime1;
 
                         _repository.Update<CommonAccount>( "CommonAccount", "TeleNo = @0", TeleNo, result1 );
-
-                        //_DBContext.CommonAccount.Update( result1 );
-                        //_DBContext.SaveChanges();
-
-                        //SQLCommand  =   $"UPDATE CommonAccount SET RecordControl=2, RecordControlDateTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', " +
-                        //                $"LastAccessTime='{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}' WHERE TeleNo='{TeleNo}";
-                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
-                    } // end of if( SQLError == string.Empty && RecordCount > 0 )
+                    } // end of if( result1 != null )
                     else
                     { 
                         CommonAccount sp = new CommonAccount
@@ -196,18 +184,11 @@ namespace WebAPITest6
                         };
 
                         _repository.Insert<CommonAccount>( "CommonAccount", sp );
-                        //_DBContext.CommonAccount.Add( sp );
-                        //_DBContext.SaveChanges();
-
-                        //SQLCommand  =   $"INSERT INTO CommonAccount ( RecordControl, RecordControlDateTime, Enabled, CreateTime, LastAccessTime, TeleNo, AccountType, AccountNo, RFU ) " + 
-                        //                $"VALUES ( 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', 1, '{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}, " + 
-                        //                $"'{TmpDateTime1.ToString( "yyyy/MM/dd HH:mm:ss.fff" )}', '{TeleNo}', 'F', '', '' )"; 
-                        //_Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, ClientIP );
 
                         CustomerClass.TeleAccount.AccountNo         =   "";
                         CustomerClass.TeleAccount.TotalGetCallNo    =   "";
                         CustomerClass.TeleAccount.TotalForm         =   "";
-                    } // end of else if( SQLError == string.Empty && RecordCount > 0 )
+                    } // end of else if( result1 != null )
 
                     iitDataTools.SetResponseResult<AccountData.Customer>( APIResult, "0000", iitMSG.HTTPMSG[ iitMSG.CODE.HTTP.SUCCESS ], CustomerClass );
 
