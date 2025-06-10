@@ -31,7 +31,7 @@ public partial class DBContext : DbContext
 
     public virtual DbSet<CommonTWTransaction> CommonTWTransaction { get; set; }
 
-    public virtual DbSet<QRCode> QRCode { get; set; }
+    public virtual DbSet<QRCodes> QRCodes { get; set; }
 
     public virtual DbSet<SystemParameter> SystemParameter { get; set; }
 
@@ -467,13 +467,13 @@ public partial class DBContext : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<QRCode>(entity =>
+        modelBuilder.Entity<QRCodes>(entity =>
         {
             entity.HasKey(e => e.RecSerialNo).HasName("PK__QRCode__FB760702CEEDA011");
 
-            entity.HasIndex(e => new { e.TeleNo, e.QRCode1 }, "Index_01").IsUnique();
+            entity.HasIndex(e => new { e.TeleNo, e.QRCode }, "Index_01").IsUnique();
 
-            entity.HasIndex(e => new { e.KeyNo, e.QRCode1 }, "Index_02").IsUnique();
+            entity.HasIndex(e => new { e.KeyNo, e.QRCode }, "Index_02").IsUnique();
 
             entity.HasIndex(e => new { e.KeyNo, e.QRCodeStratDate }, "Index_03");
 
@@ -499,7 +499,7 @@ public partial class DBContext : DbContext
                 .HasMaxLength(20)
                 .IsUnicode(false);
             entity.Property(e => e.LastAccessTime).HasColumnType("datetime");
-            entity.Property(e => e.QRCode1)
+            entity.Property(e => e.QRCode)
                 .IsRequired()
                 .HasMaxLength(18)
                 .IsUnicode(false)

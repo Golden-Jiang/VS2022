@@ -21,6 +21,7 @@ namespace WebAPITest6
     {
         public string GetAccountFromTeleNo( string TeleNo );
         public string GetForexAccountFromTeleNo( string TeleNo );
+        public string GetAccountFromTeleNoNetBank( string TeleNo, string CustID );
     } // end of public interface IAccountService
 } // end of namespace WebAPITest6
 //===================================================================================================
