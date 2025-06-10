@@ -15,6 +15,10 @@ using Microsoft.EntityFrameworkCore;
 using WebAPITest6.Models;
 using iitLogWeb;
 using WebAPITest6.Repository;
+using WebAPITest6.Filter;
+using System.Net;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 //---------------------------------------------------------------------------------------------------
 // Program Area
 //---------------------------------------------------------------------------------------------------
@@ -34,9 +38,9 @@ namespace WebAPITest6
             //    return allRepository.ToDictionary( p => p.Name, p => p );
             //});
 
-            services.AddScoped<IAccountService, AccountService>();
+            services.AddTransient<IAccountService, AccountService>();
 
-            services.AddScoped<IiitLog, iitLog>();
+            services.AddTransient<IiitLog, iitLog>();
         }
 
         public static void AddDatabaseServices( this IServiceCollection services, IConfiguration configuration )
@@ -57,11 +61,21 @@ namespace WebAPITest6
             services.AddControllers();
         }
 
+        public static void AddSystemFilter(this IServiceCollection services, IConfiguration configuration )
+        {
+            services.AddMvc( config => {
+                config.Filters.Add( new AuthorizationFilter() );
+                config.Filters.Add<ActionFilter>();              // 全局註冊過濾器
+                config.Filters.Add( new ResultFilter() );
+            } );
+        }
+
         public static void AddAllServices(this IServiceCollection services, IConfiguration configuration )
         {
             AddApplicationServices( services );
             AddDatabaseServices( services, configuration );
             AddSystemServices( services, configuration );
+            AddSystemFilter( services, configuration );
             // 這裡可以添加更多的服務註冊方法
         }
     } // end of public static class ServiceRegistration

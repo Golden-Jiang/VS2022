@@ -28,11 +28,10 @@ namespace WebAPITest6.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IAccountService _AccountService;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        //private readonly DBContext _DBContext;
-        private readonly IiitLog _Log;
-        private readonly string _ClientIP;
+        private readonly IAccountService        _AccountService;
+        private readonly IHttpContextAccessor   _httpContextAccessor;
+        private readonly IiitLog                _Log;
+        private readonly string                 _ClientIP;
 
         public AccountController( IHttpContextAccessor httpContextAccessor, DBContext dBContext, IAccountService AccountService, IiitLog Log )
         {
@@ -41,7 +40,7 @@ namespace WebAPITest6.Controllers
             _Log                    =   Log; 
             _ClientIP               =   iitSystemTools.SetClientIP( httpContextAccessor );
 
-            iitSystemTools.SetClientEnvironment( httpContextAccessor, _Log,  _ClientIP );
+            //iitSystemTools.SetClientEnvironment( httpContextAccessor, _Log,  _ClientIP );
         } // end of public AccountController
 
         // GET: http://url/Account?Query1=.....
@@ -52,7 +51,7 @@ namespace WebAPITest6.Controllers
             string              TxCode = "";
             string              TmpString1 = "", TmpString2 = "";
             iitAPIResultClass   APIResult = new iitAPIResultClass();
- 
+
             try
             {
                 while( true )
@@ -169,17 +168,17 @@ namespace WebAPITest6.Controllers
                             _Log.WriteLog( APIResult.RespDesc, iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
                             break;
                     } // end of switch( TxCode )
- 
+
                     break;
                 } // end of while( true )
             } // end of try
             catch( Exception except )
             {
-                _Log.except  =   except;
+                _Log.except = except;
                 _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
 
                 iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                ReturnValue =   JsonConvert.SerializeObject( APIResult );
+                ReturnValue = JsonConvert.SerializeObject( APIResult );
             } // end of catch
 
             return ReturnValue;

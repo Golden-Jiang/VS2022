@@ -54,12 +54,12 @@ namespace WebAPITest6
             DateTime                TmpDateTime1 = DateTime.Now;
             iitAPIResultClass       APIResult = new iitAPIResultClass();
             AccountData.Customer    CustomerClass = new AccountData.Customer();
- 
+
             try
             {
                 while( true )
                 {
-                    if( !iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
+                    if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
                         throw new iitException( "" );
 
                     //var result1 =   from a in _DBContext.WebTeleNo
@@ -124,13 +124,13 @@ namespace WebAPITest6
                     } // end of else if( SQLError == string.Empty && RecordCount > 0 )
 
                     iitDataTools.SetResponseResult<AccountData.Customer>( APIResult, "0000", iitMSG.HTTPMSG[ iitMSG.CODE.HTTP.SUCCESS ], CustomerClass );
- 
+
                     break;
                 } // end of while( true )
             } // end of try
-            catch( Exception except )
+            catch(Exception except )
             {
-                if( except.GetType() != typeof( iitException ) )
+                if(except.GetType() != typeof( iitException ) )
                 {
                     _Log.except =   except;
                     _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
