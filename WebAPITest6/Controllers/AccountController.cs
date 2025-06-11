@@ -71,13 +71,13 @@ namespace WebAPITest6.Controllers
                             if( TmpString2.Length == 0 )
                                 ReturnValue =   _AccountService.GetAccountFromTeleNo( TmpString1 );
                             else
-                                ReturnValue = _AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2 );
+                                ReturnValue =   _AccountService.GetAccountFromTeleNoNetBank( TmpString1, TmpString2 );
                             break;
                         case    "SA013001F"      :   // 依據電話號碼讀取外幣綁定常用帳號
                             if( ( ReturnValue = iitDataTools.CheckQuery( _httpContextAccessor, APIResult, "TeleNo", ref TmpString1 ) ) != "" )
                                 break;
 
-                            ReturnValue = _AccountService.GetForexAccountFromTeleNo( TmpString1 );
+                            ReturnValue =   _AccountService.GetForexAccountFromTeleNo( TmpString1 );
                             break;
                         //                        case    "SA013101"      :   // 變更綁定電話號碼
                         //                            if( ( ReturnValue = Utility.CheckGetParameter( ControllerContext, APIResult, "ND", ref TmpString1 ) ) != "" )
@@ -174,10 +174,14 @@ namespace WebAPITest6.Controllers
             } // end of try
             catch( Exception except )
             {
-                _Log.except = except;
+                _Log.except =   except;
                 _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
 
-                iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
+                    iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
+
                 ReturnValue = JsonConvert.SerializeObject( APIResult );
             } // end of catch
 

@@ -226,13 +226,17 @@ namespace WebAPITest6
                 var dbSet   =   dbSetProperty.GetValue( _DBContext ) as IQueryable<T>;
                 var results =   dbSet.Where<T>( $"{KeyCondition}", Key ).FirstOrDefault();
 
-                _DBContext.Set<T>().Remove( results );
-                _DBContext.SaveChanges(); // 儲存變更
+                if( results != null ) 
+                { 
+                    _DBContext.Set<T>().Remove( results );
+                    _DBContext.SaveChanges(); // 儲存變更
+                }
 
                 SQLCommand = $"DELETE FROM {TableName} WHERE {KeyCondition}='{Key}'";
                 _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );
             } // end of if( dbSetProperty != null )
         } // end of public void Delete<T>
+
         public void Delete<T>( string TableName, string KeyCondition, string Key1, string Key2 ) where T : class
         {
             string SQLCommand = "";
@@ -243,8 +247,11 @@ namespace WebAPITest6
                 var dbSet   =   dbSetProperty.GetValue( _DBContext ) as IQueryable<T>;
                 var results =   dbSet.Where<T>( $"{KeyCondition}", Key1, Key2 ).FirstOrDefault();
 
-                _DBContext.Set<T>().Remove( results );
-                _DBContext.SaveChanges(); // 儲存變更
+                if( results != null ) 
+                { 
+                    _DBContext.Set<T>().Remove( results );
+                    _DBContext.SaveChanges(); // 儲存變更
+                }
 
                 SQLCommand = $"DELETE FROM {TableName} WHERE {KeyCondition}='{Key1}-{Key2}'";
                 _Log.WriteLog( $"SQLCommand={SQLCommand}", iitConst.LOG.INFO, iitConst.LOG.LEVEL_DEBUG, _ClientIP );

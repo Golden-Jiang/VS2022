@@ -63,8 +63,8 @@ namespace WebAPITest6
             {
                 while( true )
                 {
-                    if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
-                        throw new iitException( "" );
+                    if( ! TaiwanIdValidator.isMobilePhoneNumber( TeleNo ) )
+                        throw new iitException( "電話號碼錯誤" );
 
                     var result1 = _repository.Select<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo );
                     if( result1 != null )
@@ -119,12 +119,13 @@ namespace WebAPITest6
             } // end of try
             catch(Exception except )
             {
-                if(except.GetType() != typeof( iitException ) )
-                {
-                    _Log.except =   except;
-                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             return JsonConvert.SerializeObject( APIResult );
@@ -192,12 +193,13 @@ namespace WebAPITest6
             } // end of try
             catch( Exception except )
             {
-                if( except.GetType() != typeof( iitException ) )
-                {
-                    _Log.except =   except;
-                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             return JsonConvert.SerializeObject( APIResult );
@@ -223,11 +225,11 @@ namespace WebAPITest6
             {
                 while( true )
                 {
-                    if( ! iitCheckTools.CheckTeleNo( TeleNo, APIResult ) )
-                        throw new iitException( "" );
+                    if( ! TaiwanIdValidator.isMobilePhoneNumber( TeleNo ) )
+                        throw new iitException( "電話號碼錯誤" );
 
                     if( ! TaiwanIdValidator.IsNationalIdentificationNumberValid( CustID ) )
-                        throw new Exception( "身分證號碼錯誤" );
+                        throw new iitException( "身分證號碼錯誤" );
 
                     // 以網銀帳號讀取對應的電話號碼
                     var result1 =   _repository.Select<WebTeleNo>( "WebTeleNo", "TeleNo = @0 && CustID = @1", TeleNo, CustID );
@@ -303,7 +305,7 @@ namespace WebAPITest6
                                     result2.TotalForm               =   0;
                                     result2.CustID                  =   CustID;
 
-                                    _repository.Update<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo, result1 );
+                                    _repository.Update<WebTeleNo>( "WebTeleNo", "TeleNo = @0", TeleNo, result2 );
                                 } // end of if( result1!= null )
 
                                 Exist = 1;
@@ -348,13 +350,13 @@ namespace WebAPITest6
             } // end of try
             catch( Exception except )
             {
-                if( except.GetType() != typeof( iitException ) )
-                {
-                    Result = 9;
-                    _Log.except =   except;
-                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             // Insert into ChangeCustIDTeleNo
@@ -458,12 +460,13 @@ namespace WebAPITest6
             } // end of try
             catch( Exception except )
             {
-                if( except.GetType() != typeof( iitException ) )
-                {
-                    _Log.except =   except;
-                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             return ReturnValue;
@@ -669,12 +672,13 @@ namespace WebAPITest6
             } // end of try
             catch( Exception except )
             {
-                if( except.GetType() != typeof( iitException ) )
-                {
-                    _Log.except =   except;
-                    _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+                _Log.except =   except;
+                _Log.WriteLog( "", iitConst.LOG.ERROR, iitConst.LOG.LEVEL_HIGHEST, _ClientIP );
+
+                if(except.GetType() == typeof( iitException ) )
+                    iitDataTools.SetResponseResult<string>( APIResult, "2000", except.Message, "" );
+                else
                     iitDataTools.SetResponseResult<string>( APIResult, "8501", iitMSG.APIError.E8501, "" );
-                } // end of if( except.GetType() != typeof( iitException ) )
             } // end of catch
 
             return ReturnValue;
