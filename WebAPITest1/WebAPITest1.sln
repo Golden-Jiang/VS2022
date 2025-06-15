@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "方案項目", "方案項�
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPITest6", "..\WebAPITest6\WebAPITest6.csproj", "{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCWeb1", "..\MVCWeb1\MVCWeb1.csproj", "{3AC2E879-779D-4850-913F-8A1590E742A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D4AD7E6-3D8A-4278-B193-8285D8538D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC2E879-779D-4850-913F-8A1590E742A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC2E879-779D-4850-913F-8A1590E742A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC2E879-779D-4850-913F-8A1590E742A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC2E879-779D-4850-913F-8A1590E742A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

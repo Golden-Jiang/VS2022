@@ -39,8 +39,10 @@ namespace WebAPITest6
 
             app.UseAuthorization();
 
-
             app.MapControllers();
+
+            // 支持靜態文件(圖片, 影音, *.html) middleware
+            app.UseStaticFiles();
 
             app.Run();
         } // end of public static void Main(string[] args)
